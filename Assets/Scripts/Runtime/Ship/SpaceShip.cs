@@ -1,8 +1,11 @@
 using NewKris.Runtime.Utility.CommonObjects;
+using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
 
 namespace NewKris.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
+        public float mouseSensitivity = 0.25f;
+        
         [Header("Parameters")]
         public float maxMoveSpeed;
         public float moveDamping;
@@ -37,7 +40,7 @@ namespace NewKris.Runtime.Ship {
             PlayerController.OnEndFire2 += EndFire2;
 
             _position = new DampedVector(transform.position);
-            HideCursor();
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnDestroy() {
@@ -53,7 +56,7 @@ namespace NewKris.Runtime.Ship {
         }
 
         private void Move() {
-            _position.Target = GetTargetPos();
+            _position.Target += PlayerController.DeltaMouse.ProjectOnGround() * mouseSensitivity;
             _position.Target = Vector3.Max(boundary.MinCorner, _position.Target);
             _position.Target = Vector3.Min(boundary.MaxCorner, _position.Target);
             
@@ -84,28 +87,12 @@ namespace NewKris.Runtime.Ship {
             weapon2?.EndFire();
         }
 
-        private Vector3 GetTargetPos() {
-            Ray camRay = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
-            
-            if (_groundPlane.Raycast(camRay, out float distance)) {
-                return camRay.GetPoint(distance);
-            }
-
-            return Vector3.zero;
-        }
-
         private float GetTargetRoll() {
             return (_position.Velocity.x / maxMoveSpeed) * maxRoll;
         }
 
         private float GetTargetPitch() {
             return (_position.Velocity.z / maxMoveSpeed) * maxPitch;
-        }
-
-        private void HideCursor() {
-            Texture2D cursorTexture = new Texture2D(1, 1, TextureFormat.RGBA32, false);
-            cursorTexture.SetPixel(0, 0, Color.clear);
-            Cursor.SetCursor(cursorTexture, Vector2.zero, CursorMode.Auto);
         }
     }
 }

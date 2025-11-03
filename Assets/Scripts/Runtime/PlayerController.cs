@@ -13,14 +13,11 @@ namespace NewKris.Runtime {
 
         public int shipActionMap = 0;
         
-        private InputAction _strafeAction;
         private InputAction _aimAction;
         
-        public static Vector3 MousePosition { get; private set; }
-        public static Vector2 StrafeDirection { get; private set; }
+        public static Vector2 DeltaMouse { get; private set; }
         
         private void Awake() {
-            _strafeAction = InputSystem.actions["Strafe"];
             _aimAction = InputSystem.actions["Aim"];
             
             InputSystem.actions["Fire1"].performed += _ => OnBeginFire1?.Invoke();
@@ -37,8 +34,7 @@ namespace NewKris.Runtime {
         }
 
         private void Update() {
-            MousePosition = _aimAction.ReadValue<Vector2>();
-            StrafeDirection = _strafeAction.ReadValue<Vector2>();
+            DeltaMouse = _aimAction.ReadValue<Vector2>();
         }
     }
 }
