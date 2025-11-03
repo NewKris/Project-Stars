@@ -1,4 +1,5 @@
 using System;
+using NewKris.Runtime.Utility;
 using NewKris.Runtime.Utility.CommonObjects;
 using UnityEngine;
 
@@ -8,6 +9,7 @@ namespace NewKris.Runtime {
         public float moveDamping;
 
         [Header("Roll")] 
+        public Transform modelPivot;
         public float maxRoll;
         public float rollDamping;
 
@@ -32,9 +34,19 @@ namespace NewKris.Runtime {
         }
 
         private void Update() {
+            Move();
+            Roll();
+        }
+
+        private void Move() {
             _position.Target = GetTargetPos();
             transform.position = _position.Tick(moveDamping, maxMoveSpeed);
             reticle.position = _position.Target;
+        }
+
+        private void Roll() {
+            _roll.Target = GetTargetRoll();
+            modelPivot.localRotation = Quaternion.Euler(0, 0, -_roll.Tick(rollDamping));
         }
 
         private void BeginFire1() {
@@ -63,11 +75,7 @@ namespace NewKris.Runtime {
         }
 
         private float GetTargetRoll() {
-            return 0;
-        }
-
-        private Vector3 GetSmallerVector(Vector3 a, Vector3 b) {
-            return a.sqrMagnitude < b.sqrMagnitude ? a : b;
+            return (_position.Velocity.x / maxMoveSpeed) * maxRoll;
         }
     }
 }

@@ -10,22 +10,15 @@ namespace NewKris.Runtime {
         public Vector3 scrollDirection;
         public Vector3 backgroundNormal;
         public Sprite backgroundSprite;
+        public Color tint;
 
         private Transform _child1;
         private Transform _child2;
         
         private void Start() {
-            _child1 = new GameObject().transform;
-            _child1.parent = transform;
-            _child1.SetLocalPositionAndRotation(Vector3.zero, Quaternion.LookRotation(backgroundNormal));
-            _child1.localScale = Vector3.one;
-            _child1.AddComponent<SpriteRenderer>().sprite = backgroundSprite;
-            
-            _child2 = new GameObject().transform;
-            _child2.parent = transform;
-            _child2.SetLocalPositionAndRotation(SiblingOffset(), Quaternion.LookRotation(backgroundNormal));
-            _child2.localScale = Vector3.one;
-            _child2.AddComponent<SpriteRenderer>().sprite = backgroundSprite;
+            _child1 = CreateChild();
+            _child2 = CreateChild();
+            _child2.localPosition = SiblingOffset();
         }
 
         private void Update() {
@@ -44,6 +37,19 @@ namespace NewKris.Runtime {
 
         private Vector3 SiblingOffset() {
             return -scrollDirection.normalized * spacing;
+        }
+
+        private Transform CreateChild() {
+            Transform child = new GameObject().transform;
+            child.parent = transform;
+            child.SetLocalPositionAndRotation(Vector3.zero, Quaternion.LookRotation(backgroundNormal));
+            child.localScale = Vector3.one;
+            SpriteRenderer childRenderer = child.AddComponent<SpriteRenderer>();
+            
+            childRenderer.sprite = backgroundSprite;
+            childRenderer.color = tint;
+
+            return child;
         }
     }
 }
