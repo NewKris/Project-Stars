@@ -902,6 +902,8 @@ MonoBehaviour:
   maxMoveSpeed: 200
   moveDamping: 0.1
   modelPivot: {fileID: 930702207}
+  maxPitch: 20
+  pitchDamping: 0.1
   maxRoll: 30
   rollDamping: 0.1
   reticle: {fileID: 425118565}

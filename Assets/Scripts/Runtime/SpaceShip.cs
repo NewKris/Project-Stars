@@ -7,9 +7,13 @@ namespace NewKris.Runtime {
     public class SpaceShip : MonoBehaviour {
         public float maxMoveSpeed;
         public float moveDamping;
-
-        [Header("Roll")] 
         public Transform modelPivot;
+
+        [Header("Pitch")] 
+        public float maxPitch;
+        public float pitchDamping;
+        
+        [Header("Roll")]
         public float maxRoll;
         public float rollDamping;
 
@@ -17,6 +21,7 @@ namespace NewKris.Runtime {
 
         private DampedVector _position;
         private DampedAngle _roll;
+        private DampedAngle _pitch;
         private readonly Plane _groundPlane = new Plane(Vector3.up, Vector3.zero);
         
         private void Awake() {
@@ -35,7 +40,7 @@ namespace NewKris.Runtime {
 
         private void Update() {
             Move();
-            Roll();
+            RotateModel();
         }
 
         private void Move() {
@@ -44,9 +49,11 @@ namespace NewKris.Runtime {
             reticle.position = _position.Target;
         }
 
-        private void Roll() {
+        private void RotateModel() {
             _roll.Target = GetTargetRoll();
-            modelPivot.localRotation = Quaternion.Euler(0, 0, -_roll.Tick(rollDamping));
+            _pitch.Target = GetTargetPitch();
+
+            modelPivot.localRotation = Quaternion.Euler(_pitch.Tick(pitchDamping), 0, -_roll.Tick(rollDamping));
         }
 
         private void BeginFire1() {
@@ -76,6 +83,10 @@ namespace NewKris.Runtime {
 
         private float GetTargetRoll() {
             return (_position.Velocity.x / maxMoveSpeed) * maxRoll;
+        }
+
+        private float GetTargetPitch() {
+            return (_position.Velocity.z / maxMoveSpeed) * maxPitch;
         }
     }
 }
