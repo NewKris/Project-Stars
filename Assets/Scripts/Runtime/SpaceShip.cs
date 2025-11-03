@@ -8,6 +8,7 @@ namespace NewKris.Runtime {
         public float maxMoveSpeed;
         public float moveDamping;
         public Transform modelPivot;
+        public Boundary boundary;
 
         [Header("Pitch")] 
         public float maxPitch;
@@ -29,6 +30,8 @@ namespace NewKris.Runtime {
             PlayerController.OnEndFire1 += EndFire1;
             PlayerController.OnBeginFire2 += BeginFire2;
             PlayerController.OnEndFire2 += EndFire2;
+
+            _position = new DampedVector(transform.position);
         }
 
         private void OnDestroy() {
@@ -45,6 +48,9 @@ namespace NewKris.Runtime {
 
         private void Move() {
             _position.Target = GetTargetPos();
+            _position.Target = Vector3.Max(boundary.MinCorner, _position.Target);
+            _position.Target = Vector3.Min(boundary.MaxCorner, _position.Target);
+            
             transform.position = _position.Tick(moveDamping, maxMoveSpeed);
             reticle.position = _position.Target;
         }
