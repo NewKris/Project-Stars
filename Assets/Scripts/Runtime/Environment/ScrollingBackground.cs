@@ -47,6 +47,7 @@ namespace NewKris.Runtime.Environment {
             
             childRenderer.sprite = backgroundSprite;
             childRenderer.color = tint;
+            childRenderer.sortingLayerName = "Background";
 
             return child;
         }

@@ -15,7 +15,7 @@ namespace NewKris.Runtime {
         
         private InputAction _aimAction;
         
-        public static Vector2 DeltaMouse { get; private set; }
+        public static Vector2 MousePosition { get; private set; }
         
         private void Awake() {
             _aimAction = InputSystem.actions["Aim"];
@@ -34,7 +34,7 @@ namespace NewKris.Runtime {
         }
 
         private void Update() {
-            DeltaMouse = _aimAction.ReadValue<Vector2>();
+            MousePosition = _aimAction.ReadValue<Vector2>();
         }
     }
 }
