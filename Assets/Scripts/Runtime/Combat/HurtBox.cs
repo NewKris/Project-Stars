@@ -11,6 +11,8 @@ namespace NewKris.Runtime.Combat {
         
         private int _health;
 
+        public int CurrentHealth => _health;
+
         public void TakeDamage(int damage) {
             _health -= damage;
             onHurt.Invoke();

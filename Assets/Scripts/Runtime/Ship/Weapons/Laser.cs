@@ -25,7 +25,7 @@ namespace NewKris.Runtime.Ship.Weapons {
             if (_firing) {
                 return;
             }
-
+            
             _audio.PlayOneShot(chargeSound);
         }
         

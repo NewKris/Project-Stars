@@ -54,7 +54,7 @@ SphereCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Radius: 0.5
+  m_Radius: 1.41
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4467328143781085440
 MonoBehaviour:
@@ -83,7 +83,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.HitBox
   damage: 1
-  canHitFaction: 2
+  canHitFaction: 6
   onHit:
     m_PersistentCalls:
       m_Calls:

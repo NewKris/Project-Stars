@@ -1,3 +1,5 @@
+using System;
+using NewKris.Runtime.Combat;
 using NewKris.Runtime.Utility.CommonObjects;
 using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
@@ -30,7 +32,13 @@ namespace NewKris.Runtime.Ship {
         private DampedAngle _roll;
         private DampedAngle _pitch;
         private readonly Plane _groundPlane = new Plane(Vector3.up, Vector3.zero);
-        
+
+        private void OnGUI() {
+            GUILayout.BeginArea(new Rect(10, 10, 100, 100));
+            GUILayout.Label($"HP: {GetComponent<HurtBox>().CurrentHealth}");
+            GUILayout.EndArea();
+        }
+
         private void Awake() {
             PlayerController.OnBeginFire1 += BeginFire1;
             PlayerController.OnEndFire1 += EndFire1;

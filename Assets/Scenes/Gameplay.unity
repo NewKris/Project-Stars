@@ -563,6 +563,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &493307822
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 493307823}
+  m_Layer: 0
+  m_Name: =========================================== (4)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &493307823
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 493307822}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 40.73126, y: 40.46636, z: -1.21212}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &574638569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1003,6 +1034,55 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 9072568464595391452, guid: abaaefecba631624695f9a6965e35ff8, type: 3}
   m_PrefabInstance: {fileID: 3387274317015807757}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1126692305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1126692306}
+  - component: {fileID: 1126692307}
+  m_Layer: 0
+  m_Name: Asteroid Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1126692306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126692305}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 102.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1126692307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1126692305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97a0f0313930462082d0a0f045f502e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Environment.AsteroidSpawner
+  radius: 144.2
+  minSpawnRate: 1
+  pollRate: 0.1
+  spawnChance: 0.939
+  asteroidPrefab: {fileID: 635308206193567391, guid: e1698a601e79e4346a2847becc55f696, type: 3}
 --- !u!1 &1235035296
 GameObject:
   m_ObjectHideFlags: 0
@@ -1073,9 +1153,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  canTakeContactDamage: 0
-  contactDamage: 0
-  canBumpFaction: 0
 --- !u!54 &1335538764
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1308,7 +1385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &1584662935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1392,9 +1469,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  canTakeContactDamage: 0
-  contactDamage: 0
-  canBumpFaction: 0
 --- !u!1 &1782283852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1501,9 +1575,6 @@ MonoBehaviour:
   onDeath:
     m_PersistentCalls:
       m_Calls: []
-  canTakeContactDamage: 1
-  contactDamage: 1
-  canBumpFaction: 2
 --- !u!135 &1782283857
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2070,6 +2141,8 @@ SceneRoots:
   - {fileID: 330585546}
   - {fileID: 1856565995}
   - {fileID: 1507217612}
+  - {fileID: 1126692306}
+  - {fileID: 493307823}
   - {fileID: 648308296}
   - {fileID: 703686729}
   - {fileID: 1584662937}

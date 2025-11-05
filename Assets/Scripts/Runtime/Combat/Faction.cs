@@ -5,6 +5,7 @@ namespace NewKris.Runtime.Combat {
     public enum Faction {
         NONE = 0,
         FRIENDLY = 1,
-        ENEMY = 2
+        ENEMY = 2,
+        ENVIRONMENT = 4,
     }
 }
