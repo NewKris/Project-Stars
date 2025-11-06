@@ -6,6 +6,8 @@ using UnityEngine;
 
 namespace NewKris.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
+        public float sensitivity;
+        
         [Header("Parameters")]
         public float maxMoveSpeed;
         public float moveDamping;
@@ -25,7 +27,6 @@ namespace NewKris.Runtime.Ship {
         [Header("Miscs")]
         public Transform modelPivot;
         public Boundary boundary;
-
         public Transform reticle;
 
         private DampedVector _position;
@@ -46,7 +47,9 @@ namespace NewKris.Runtime.Ship {
             PlayerController.OnEndFire2 += EndFire2;
 
             _position = new DampedVector(transform.position);
-            HideCursor();
+            //HideCursor();
+
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
         private void OnDestroy() {
@@ -106,14 +109,16 @@ namespace NewKris.Runtime.Ship {
         }
 
         private Vector3 MouseToTargetPosition() {
-            Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
-            
-            if (_groundPlane.Raycast(ray, out float enter)) {
-                return ray.GetPoint(enter);
-            }
-            else {
-                return _position.Target;
-            }
+            //Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
+            //
+            //if (_groundPlane.Raycast(ray, out float enter)) {
+            //    return ray.GetPoint(enter);
+            //}
+            //else {
+            //    return _position.Target;
+            //}
+
+            return _position.Target + PlayerController.MousePosition.ProjectOnGround() * sensitivity;
         }
 
         private void HideCursor() {

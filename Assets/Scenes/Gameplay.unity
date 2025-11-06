@@ -1000,7 +1000,7 @@ GameObject:
   - component: {fileID: 989700905}
   - component: {fileID: 989700904}
   m_Layer: 5
-  m_Name: Image (1)
+  m_Name: Clear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1039,7 +1039,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1196,7 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a0f0313930462082d0a0f045f502e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Environment.AsteroidSpawner
-  radius: 144.2
+  radius: 40.3
   minSpawnRate: 1
   pollRate: 0.1
   spawnChance: 0.939
@@ -1346,7 +1346,7 @@ GameObject:
   - component: {fileID: 1361717649}
   - component: {fileID: 1361717648}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Letterbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1421,7 +1421,7 @@ GameObject:
   - component: {fileID: 1365642654}
   - component: {fileID: 1365642653}
   m_Layer: 5
-  m_Name: Image (2)
+  m_Name: Letterbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1924,6 +1924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb418464893447b8fe1977ce2fe465f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.SpaceShip
+  sensitivity: 0.2
   maxMoveSpeed: 200
   moveDamping: 0.1
   maxPitch: 20
@@ -2204,7 +2205,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 300.11, y: 1, z: 164.3345}
+  m_LocalScale: {x: 93, y: 1, z: 164.3345}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 277621313}
