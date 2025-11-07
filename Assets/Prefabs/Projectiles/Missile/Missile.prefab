@@ -49,12 +49,12 @@ MonoBehaviour:
   explosionDamage: 5
   accelerationSpeed: 50
   maxFlightSpeed: 50
-  maxTurningSpeed: 10
+  maxTurningSpeed: 1
   detectFaction:
     serializedVersion: 2
-    m_Bits: 128
-  detectionAngle: 90
-  detectionRange: 50
+    m_Bits: 384
+  detectionAngle: 45
+  detectionRange: 149.7
 --- !u!1 &2806339532814502476
 GameObject:
   m_ObjectHideFlags: 0

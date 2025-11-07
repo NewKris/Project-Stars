@@ -1,7 +1,5 @@
-using System;
 using NewKris.Runtime.Combat;
 using NewKris.Runtime.Utility;
-using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
 
 namespace NewKris.Runtime.Projectiles {
@@ -19,8 +17,8 @@ namespace NewKris.Runtime.Projectiles {
         public float detectionRange;
 
         private float _speed;
-        private HurtBox _target;
-        private Collider[] _inRangeColliders = new Collider[10];
+        private GameObject _target;
+        private readonly Collider[] _inRangeColliders = new Collider[10];
 
         public void Explode(Vector3 hitPoint) {
             ExplosionSystem.SpawnExplosion(
@@ -39,7 +37,23 @@ namespace NewKris.Runtime.Projectiles {
 
         private void Update() {
             if (_target) {
+                float maxDelta = maxTurningSpeed * (_speed / maxFlightSpeed);
+                Vector3 dir = (_target.transform.position - transform.position).normalized;
+                Vector3 aimDir = Vector3.RotateTowards(
+                    transform.forward, 
+                    dir, 
+                    maxDelta * Time.deltaTime, 
+                    0.0f
+                );
                 
+                transform.rotation = Quaternion.LookRotation(aimDir);
+
+                if (!InsideCone(_target)) {
+                    _target = null;
+                }
+            }
+            else {
+                _target = FindTarget();
             }
             
             _speed += accelerationSpeed * Time.deltaTime;
@@ -48,17 +62,29 @@ namespace NewKris.Runtime.Projectiles {
         }
 
         private GameObject FindTarget() {
-            int inRangeTargets = Physics.OverlapSphereNonAlloc(
+            int inRangeCount = Physics.OverlapSphereNonAlloc(
                 transform.position, 
                 detectionRange, 
-                _inRangeColliders, 
-                LayerMask.NameToLayer("Hurt Box")
+                _inRangeColliders,
+                detectFaction
             );
+
+            for (int i = 0; i < inRangeCount; i++) {
+                if (InsideCone(_inRangeColliders[i].gameObject)) {
+                    return _inRangeColliders[i].gameObject;
+                }
+            }
 
             return null;
         }
 
-        private void OnDrawGizmosSelected() {
+        private bool InsideCone(GameObject target) {
+            Vector3 dir = (target.transform.position - transform.position).normalized;
+            float angle = Mathf.Abs(Vector3.Angle(transform.forward, dir));
+            return angle < detectionAngle * 0.5f;
+        }
+        
+        private void OnDrawGizmos() {
             HandlesProxy.DrawArc(
                 transform.position, 
                 transform.forward, 
