@@ -1,5 +1,6 @@
 using NewKris.Runtime.Combat;
 using NewKris.Runtime.Utility;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace NewKris.Runtime.Projectiles {
@@ -68,20 +69,30 @@ namespace NewKris.Runtime.Projectiles {
                 _inRangeColliders,
                 detectFaction
             );
-
+            
+            float closestDistance = float.MaxValue;
+            int closestIndex = -1;
+            
             for (int i = 0; i < inRangeCount; i++) {
-                if (InsideCone(_inRangeColliders[i].gameObject)) {
-                    return _inRangeColliders[i].gameObject;
+                float distance = CalculateSqrDistance(_inRangeColliders[i].GameObject());
+                
+                if (InsideCone(_inRangeColliders[i].gameObject) && distance < closestDistance) {
+                    closestDistance = distance;
+                    closestIndex = i;
                 }
             }
 
-            return null;
+            return closestIndex == -1 ? null : _inRangeColliders[closestIndex].gameObject;
         }
 
         private bool InsideCone(GameObject target) {
             Vector3 dir = (target.transform.position - transform.position).normalized;
             float angle = Mathf.Abs(Vector3.Angle(transform.forward, dir));
             return angle < detectionAngle * 0.5f;
+        }
+
+        private float CalculateSqrDistance(GameObject target) {
+            return Vector3.SqrMagnitude(target.transform.position - transform.position);
         }
         
         private void OnDrawGizmos() {
