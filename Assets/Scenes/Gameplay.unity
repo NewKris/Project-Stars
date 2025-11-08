@@ -1425,7 +1425,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97a0f0313930462082d0a0f045f502e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Environment.AsteroidSpawner
-  radius: 40.3
+  radius: 127.8
   minSpawnRate: 1
   pollRate: 0.1
   spawnChance: 0.939
