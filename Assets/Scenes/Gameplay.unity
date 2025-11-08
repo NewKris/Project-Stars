@@ -1348,17 +1348,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 997556607}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &1015314977 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2276142413011848549, guid: 1d3938fe5ead6e7459088ae40da012e0, type: 3}
-  m_PrefabInstance: {fileID: 13739388}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5007869225754609b10093d25ea642e8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.Laser
 --- !u!1 &1027973970
 GameObject:
   m_ObjectHideFlags: 0
@@ -1561,7 +1550,7 @@ GameObject:
   - component: {fileID: 1335538765}
   - component: {fileID: 1335538764}
   - component: {fileID: 1335538763}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Projectile Killzone (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1813,7 +1802,7 @@ GameObject:
   - component: {fileID: 1584662936}
   - component: {fileID: 1584662935}
   - component: {fileID: 1584662938}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Projectile Killzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2098,7 +2087,7 @@ MonoBehaviour:
   maxRoll: 30
   rollDamping: 0.1
   weapon1: {fileID: 1659339891}
-  weapon2: {fileID: 1015314977}
+  weapon2: {fileID: 2648265549517027575}
   modelPivot: {fileID: 930702207}
   boundary: {fileID: 1856565996}
   reticle: {fileID: 425118565}
@@ -2839,6 +2828,17 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2648265549517027576}
   m_SourcePrefab: {fileID: 100100000, guid: 66924209fa0e2154e9f6c7c2e0e86631, type: 3}
+--- !u!114 &2648265549517027575 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6759616465507008215, guid: 66924209fa0e2154e9f6c7c2e0e86631, type: 3}
+  m_PrefabInstance: {fileID: 2648265549517027573}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1687678247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45b4477bd14148ef816ec6962a435417, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.MissileLauncher
 --- !u!82 &2648265549517027576
 AudioSource:
   m_ObjectHideFlags: 0

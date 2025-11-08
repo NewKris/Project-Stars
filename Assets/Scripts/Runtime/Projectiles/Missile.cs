@@ -21,9 +21,14 @@ namespace NewKris.Runtime.Projectiles {
         private GameObject _target;
         private readonly Collider[] _inRangeColliders = new Collider[10];
 
-        public void Explode(Vector3 hitPoint) {
+        public void Explode(Collider otherCollider) {
+            if (KillZone.IsKillZone(otherCollider.gameObject.layer)) {
+                gameObject.SetActive(false);
+                return;
+            }
+            
             ExplosionSystem.SpawnExplosion(
-                hitPoint, 
+                otherCollider.ClosestPoint(transform.position), 
                 GetComponentInChildren<HitBox>().canHitFaction,
                 explosionDamage
             );

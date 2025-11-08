@@ -7,17 +7,17 @@ namespace NewKris.Runtime.Combat {
     public class HitBox : MonoBehaviour {
         public int damage;
         public LayerMask canHitFaction;
-        public UnityEvent<Vector3> onHit;
+        public UnityEvent<Collider> onHit;
 
         private void OnTriggerEnter(Collider other) {
             if (other.TryGetComponent(out HurtBox hurtBox) && CanHurtFaction(hurtBox.gameObject.layer)) {
                 hurtBox.TakeDamage(damage);
-                onHit.Invoke(other.ClosestPoint(transform.position));
+                onHit.Invoke(other);
             }
         }
 
         private bool CanHurtFaction(LayerMask faction) {
-            return canHitFaction.ContainstLayer(faction);
+            return canHitFaction.ContainstLayer(faction) || KillZone.IsKillZone(faction);
         }
     }
 }
