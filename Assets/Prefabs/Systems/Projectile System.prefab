@@ -44,5 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 060f2806eb5340588d92e2900399cc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.SimpleProjectileSystem
+  riflePrefab: {fileID: 470730067449800906, guid: 307f45488b5cd0947a31317608974376, type: 3}
   pelletPrefab: {fileID: 470730067449800906, guid: 4b496c6492e094a498f8ea8c22064b02, type: 3}
-  asteroidPrefab: {fileID: 0}
+  asteroidPrefab: {fileID: 635308206193567391, guid: e1698a601e79e4346a2847becc55f696, type: 3}

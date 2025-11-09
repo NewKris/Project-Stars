@@ -7,6 +7,7 @@ using UnityEngine.Pool;
 
 namespace NewKris.Runtime.Ship.Weapons {
     public class MachineGun : Weapon {
+        public ProjectileType projectileType;
         public Transform[] bulletSpawns;
         public AudioClip[] bulletSounds;
         public float fireRate;
@@ -37,7 +38,7 @@ namespace NewKris.Runtime.Ship.Weapons {
         }
 
         private void SpawnBullet() {
-            if (SimpleProjectileSystem.GetProjectile(out GameObject bullet, ProjectileType.PELLET)) {
+            if (SimpleProjectileSystem.GetProjectile(out GameObject bullet, projectileType)) {
                 bullet.transform.position = bulletSpawns[_nextSpawnIndex].position;
                 bullet.transform.rotation = Quaternion.identity;
                 bullet.gameObject.SetActive(true);
