@@ -1,8 +1,6 @@
-using NewKris.Runtime.Combat;
-using NewKris.Runtime.Ship.Weapons;
 using UnityEngine;
 
-namespace NewKris.Runtime.Projectiles {
+namespace NewKris.Runtime.Combat.Projectiles {
     public class SimpleProjectile : MonoBehaviour {
         public float maxSpeed;
         public Vector3 direction;

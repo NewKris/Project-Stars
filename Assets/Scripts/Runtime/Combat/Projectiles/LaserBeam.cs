@@ -1,8 +1,6 @@
-using System;
-using NewKris.Runtime.Combat;
 using UnityEngine;
 
-namespace NewKris.Runtime.Projectiles {
+namespace NewKris.Runtime.Combat.Projectiles {
     public class LaserBeam : MonoBehaviour {
         private void Update() {
             transform.rotation = Quaternion.identity;

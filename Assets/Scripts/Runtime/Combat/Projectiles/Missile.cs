@@ -1,10 +1,8 @@
-using NewKris.Runtime.Combat;
 using NewKris.Runtime.Utility;
 using NewKris.Runtime.Utility.Attributes;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace NewKris.Runtime.Projectiles {
+namespace NewKris.Runtime.Combat.Projectiles {
     public class Missile : MonoBehaviour {
         public int explosionDamage;
 

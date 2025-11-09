@@ -1,9 +1,8 @@
-using System;
-using NewKris.Runtime.Projectiles;
-using NewKris.Runtime.Utility.CommonObjects;
+using NewKris.Runtime.Combat.Projectiles;
+using NewKris.Runtime.Ship;
 using UnityEngine;
 
-namespace NewKris.Runtime.Ship.Weapons {
+namespace NewKris.Runtime.Combat.Weapons {
     public class MissileLauncher : Weapon {
         public float fireRate;
         public Transform missileSpawn;

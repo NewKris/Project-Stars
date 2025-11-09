@@ -1,11 +1,8 @@
-using System;
-using NewKris.Runtime.Projectiles;
-using NewKris.Runtime.Utility.CommonObjects;
-using NewKris.Runtime.Utility.Timers;
+using NewKris.Runtime.Combat.Projectiles;
+using NewKris.Runtime.Ship;
 using UnityEngine;
-using UnityEngine.Pool;
 
-namespace NewKris.Runtime.Ship.Weapons {
+namespace NewKris.Runtime.Combat.Weapons {
     public class MachineGun : Weapon {
         public ProjectileType projectileType;
         public Transform[] bulletSpawns;

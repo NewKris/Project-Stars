@@ -4,7 +4,7 @@ using System.Linq;
 using NewKris.Runtime.Utility.CommonObjects;
 using UnityEngine;
 
-namespace NewKris.Runtime.Projectiles {
+namespace NewKris.Runtime.Combat.Projectiles {
     public enum MissileType {
         MISSILE
     }

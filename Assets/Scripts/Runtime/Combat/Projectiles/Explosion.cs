@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace NewKris.Runtime.Projectiles {
+namespace NewKris.Runtime.Combat.Projectiles {
     public class Explosion : MonoBehaviour {
         public float lifeTime;
 
