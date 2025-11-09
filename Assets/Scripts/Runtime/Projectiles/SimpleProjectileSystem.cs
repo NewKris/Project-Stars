@@ -19,8 +19,8 @@ namespace NewKris.Runtime.Projectiles {
         private PrefabPool _pelletPool;
         private PrefabPool _asteroidPool;
 
-        public static bool GetProjectile(out GameObject projectile, ProjectileType projectileType) {
-            return Instance.GetPool(projectileType).GetObject(out projectile);
+        public static bool GetProjectile(out GameObject projectile, ProjectileType type) {
+            return Instance.GetPool(type).GetObject(out projectile);
         }
 
         private void Awake() {
