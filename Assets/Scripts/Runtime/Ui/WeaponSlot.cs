@@ -11,17 +11,12 @@ namespace NewKris.Runtime.Ui {
         RIGHT
     }
     
-    public class WeaponSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler {
+    public class WeaponSlot : MonoBehaviour {
         public WeaponHand weaponHand;
-        public Image image;
         public Image iconImage;
-        public Sprite hoverSprite;
-        public AudioClip hoverSound;
         public WeaponDatabase database;
 
         private int _selectedWeaponIndex;
-        private Sprite _defaultSprite;
-        private AudioSource _audio;
 
         public void Increment() {
             _selectedWeaponIndex++;
@@ -41,20 +36,8 @@ namespace NewKris.Runtime.Ui {
             UpdateIcon();
             EquipWeapon();
         }
-        
-        public void OnPointerEnter(PointerEventData eventData) {
-            image.sprite = hoverSprite;
-            _audio.PlayOneShot(hoverSound);
-        }
-        
-        public void OnPointerExit(PointerEventData eventData) {
-            image.sprite = _defaultSprite;
-        }
 
         private void Awake() {
-            _defaultSprite = image.sprite;
-            _audio = GetComponent<AudioSource>();
-
             _selectedWeaponIndex = GetEquippedWeaponIndex();
             
             UpdateIcon();
