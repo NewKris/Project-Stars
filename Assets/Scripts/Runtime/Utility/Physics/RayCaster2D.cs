@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NewKris.Runtime.Utility.Physics {
+namespace Werehorse.Runtime.Utility.Physics {
     public class RayCaster2D : PhysicsCaster2D {
         public override bool Evaluate(out RaycastHit2D hit) {
             hit = Physics2D.Raycast(transform.position, GetDirection(), length, mask);

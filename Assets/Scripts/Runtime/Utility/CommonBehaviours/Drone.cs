@@ -1,7 +1,7 @@
-using NewKris.Runtime.Utility.CommonObjects;
 using UnityEngine;
+using Werehorse.Runtime.Utility.CommonObjects;
 
-namespace NewKris.Runtime.Utility.CommonBehaviours {
+namespace Werehorse.Runtime.Utility.CommonBehaviours {
     /// <summary>
     /// Follows a target with soft damping.
     /// </summary>

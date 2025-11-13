@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace NewKris.Runtime {
+namespace Werehorse.Runtime {
     public class PlayerController : MonoBehaviour {
         public static event Action OnBeginFire1;
         public static event Action OnEndFire1;

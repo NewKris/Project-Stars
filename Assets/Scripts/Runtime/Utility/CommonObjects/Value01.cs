@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace NewKris.Runtime.Utility.CommonObjects {
+namespace Werehorse.Runtime.Utility.CommonObjects {
     [Serializable]
     public partial struct Value01 {
         [SerializeField, Range(0, 1)] private float value;

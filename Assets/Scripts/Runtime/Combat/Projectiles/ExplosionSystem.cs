@@ -1,7 +1,7 @@
-using NewKris.Runtime.Utility.CommonObjects;
 using UnityEngine;
+using Werehorse.Runtime.Utility.CommonObjects;
 
-namespace NewKris.Runtime.Combat.Projectiles {
+namespace Werehorse.Runtime.Combat.Projectiles {
     public class ExplosionSystem : MonoBehaviour {
         private static ExplosionSystem Instance;
 

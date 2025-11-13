@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NewKris.Runtime.Utility.Physics {
+namespace Werehorse.Runtime.Utility.Physics {
     public abstract class PhysicsCaster : MonoBehaviour {
         [Header("Debug")] 
         public float thickness = 1;

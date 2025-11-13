@@ -1,10 +1,10 @@
 using System;
 using System.Linq;
-using NewKris.Runtime.Combat.Weapons;
-using NewKris.Runtime.Utility.Attributes;
 using UnityEngine;
+using Werehorse.Runtime.Combat.Weapons;
+using Werehorse.Runtime.Utility.Attributes;
 
-namespace NewKris.Runtime.Ship.Equipment {
+namespace Werehorse.Runtime.Ship.Equipment {
     public class ShipEquipper : MonoBehaviour {
         [Header("Weapons")] 
         [ReadOnly] public Weapon weapon1;

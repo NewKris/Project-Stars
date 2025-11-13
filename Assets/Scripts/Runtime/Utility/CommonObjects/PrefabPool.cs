@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace NewKris.Runtime.Utility.CommonObjects {
+namespace Werehorse.Runtime.Utility.CommonObjects {
     public class PrefabPool {
         private int _cursor;
         private readonly GameObject _prefab;

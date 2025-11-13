@@ -1,9 +1,8 @@
-using System;
-using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
+using Werehorse.Runtime.Utility.Extensions;
 
-namespace NewKris.Runtime.Combat {
+namespace Werehorse.Runtime.Combat {
     public class HitBox : MonoBehaviour {
         public int damage;
         public LayerMask canHitFaction;

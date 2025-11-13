@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace NewKris.Runtime.Combat {
+namespace Werehorse.Runtime.Combat {
     public class EntityFlash : MonoBehaviour {
         private static readonly int FlashStrength = Shader.PropertyToID("_Flash_Strength");
 

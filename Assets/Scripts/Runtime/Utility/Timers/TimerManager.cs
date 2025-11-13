@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace NewKris.Runtime.Utility.Timers {
+namespace Werehorse.Runtime.Utility.Timers {
     public class TimerManager : MonoBehaviour {
         private static TimerManager Instance;
         private static HashSet<Timer> Timers = new HashSet<Timer>();

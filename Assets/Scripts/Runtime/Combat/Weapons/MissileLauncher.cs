@@ -1,8 +1,7 @@
-using NewKris.Runtime.Combat.Projectiles;
-using NewKris.Runtime.Ship;
 using UnityEngine;
+using Werehorse.Runtime.Combat.Projectiles;
 
-namespace NewKris.Runtime.Combat.Weapons {
+namespace Werehorse.Runtime.Combat.Weapons {
     public class MissileLauncher : Weapon {
         public float fireRate;
         public Transform missileSpawn;

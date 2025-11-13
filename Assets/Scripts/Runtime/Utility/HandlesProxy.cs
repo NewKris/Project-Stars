@@ -1,8 +1,8 @@
-﻿using NewKris.Runtime.Utility.Extensions;
-using UnityEditor;
+﻿using UnityEditor;
 using UnityEngine;
+using Werehorse.Runtime.Utility.Extensions;
 
-namespace NewKris.Runtime.Utility {
+namespace Werehorse.Runtime.Utility {
     public static class HandlesProxy {
         public static void DrawArrow(Vector3 position, Vector3 direction, Quaternion worldSpace, float size, Color color) {
 #if UNITY_EDITOR

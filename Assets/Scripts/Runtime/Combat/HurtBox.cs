@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-namespace NewKris.Runtime.Combat {
+namespace Werehorse.Runtime.Combat {
     public class HurtBox : MonoBehaviour {
         public static event Action<HurtBox> OnDeath; 
         

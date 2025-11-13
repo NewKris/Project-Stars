@@ -1,4 +1,4 @@
-namespace NewKris.Runtime.Common {
+namespace Werehorse.Runtime.Common {
     public enum GameScene {
         SPLASH_SCREEN = 0,
         MAIN_MENU = 1,

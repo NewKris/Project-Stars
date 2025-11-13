@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace NewKris.Runtime.Combat.Weapons {
+namespace Werehorse.Runtime.Combat.Weapons {
     [Serializable, CreateAssetMenu(menuName = "Weapon Data")]
     public class WeaponData : ScriptableObject {
         public int id;

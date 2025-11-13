@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NewKris.Runtime.Ship {
+namespace Werehorse.Runtime.Ship {
     public class Boundary : MonoBehaviour {
         public Vector3 MinCorner => transform.position - transform.localScale * 0.5f;
         public Vector3 MaxCorner => transform.position + transform.localScale * 0.5f;
