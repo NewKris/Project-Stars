@@ -1,13 +1,10 @@
-using System;
-using System.Linq;
-using NewKris.Runtime.Combat;
-using NewKris.Runtime.Combat.Weapons;
-using NewKris.Runtime.Ship.Equipment;
-using NewKris.Runtime.Utility.CommonObjects;
-using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
+using Werehorse.Runtime.Combat;
+using Werehorse.Runtime.Ship.Equipment;
+using Werehorse.Runtime.Utility.CommonObjects;
+using Werehorse.Runtime.Utility.Extensions;
 
-namespace NewKris.Runtime.Ship {
+namespace Werehorse.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
         public float sensitivity;
 

@@ -1,9 +1,8 @@
-using System;
-using NewKris.Runtime.Utility;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Werehorse.Runtime.Utility;
 
-namespace NewKris.Runtime.Common {
+namespace Werehorse.Runtime.Common {
     public class SceneTransitionController : MonoBehaviour {
         private static SceneTransitionController Instance;
 

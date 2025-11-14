@@ -1,7 +1,7 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace NewKris.Runtime.Combat.Projectiles {
+namespace Werehorse.Runtime.Combat.Projectiles {
     public class AsteroidSpawner : MonoBehaviour {
         public float radius;
         public float minSpawnRate;

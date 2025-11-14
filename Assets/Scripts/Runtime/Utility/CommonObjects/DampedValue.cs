@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NewKris.Runtime.Utility.CommonObjects {
+namespace Werehorse.Runtime.Utility.CommonObjects {
 	public struct DampedValue {
 		private float _velocity;
 

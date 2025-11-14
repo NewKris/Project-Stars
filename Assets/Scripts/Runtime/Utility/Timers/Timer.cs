@@ -1,4 +1,4 @@
-﻿namespace NewKris.Runtime.Utility.Timers {
+﻿namespace Werehorse.Runtime.Utility.Timers {
     public class Timer {
         private float _time;
 

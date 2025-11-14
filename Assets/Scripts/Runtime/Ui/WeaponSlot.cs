@@ -1,11 +1,10 @@
 using System;
-using NewKris.Runtime.Combat.Weapons;
-using NewKris.Runtime.Ship.Equipment;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Werehorse.Runtime.Combat.Weapons;
+using Werehorse.Runtime.Ship.Equipment;
 
-namespace NewKris.Runtime.Ui {
+namespace Werehorse.Runtime.Ui {
     public enum WeaponHand {
         LEFT,
         RIGHT

@@ -1,8 +1,8 @@
-using NewKris.Runtime.Utility;
-using NewKris.Runtime.Utility.Attributes;
 using UnityEngine;
+using Werehorse.Runtime.Utility;
+using Werehorse.Runtime.Utility.Attributes;
 
-namespace NewKris.Runtime.Combat.Projectiles {
+namespace Werehorse.Runtime.Combat.Projectiles {
     public class Missile : MonoBehaviour {
         public int explosionDamage;
 

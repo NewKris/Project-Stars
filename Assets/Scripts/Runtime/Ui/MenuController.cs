@@ -1,8 +1,7 @@
-using NewKris.Runtime.Common;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using Werehorse.Runtime.Common;
 
-namespace NewKris.Runtime.Ui {
+namespace Werehorse.Runtime.Ui {
     public class MenuController : MonoBehaviour {
         public void GoToScene(int gameScene) {
             SceneTransitionController.LoadScene((GameScene)gameScene);

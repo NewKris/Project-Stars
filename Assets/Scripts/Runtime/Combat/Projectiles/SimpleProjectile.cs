@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace NewKris.Runtime.Combat.Projectiles {
+namespace Werehorse.Runtime.Combat.Projectiles {
     public class SimpleProjectile : MonoBehaviour {
         public float maxSpeed;
         public Vector3 direction;

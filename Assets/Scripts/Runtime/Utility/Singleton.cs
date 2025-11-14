@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NewKris.Runtime.Utility {
+namespace Werehorse.Runtime.Utility {
     public static class Singleton {
         public static bool SetSingleton<T>(ref T singleton, T instance) where T : MonoBehaviour {
             if (singleton == null) {

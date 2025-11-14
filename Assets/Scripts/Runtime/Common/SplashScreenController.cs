@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace NewKris.Runtime.Common {
+namespace Werehorse.Runtime.Common {
     public class SplashScreenController : MonoBehaviour {
         public float waitTime;
 

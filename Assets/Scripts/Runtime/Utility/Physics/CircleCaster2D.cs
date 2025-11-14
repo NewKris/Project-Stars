@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace NewKris.Runtime.Utility.Physics {
+namespace Werehorse.Runtime.Utility.Physics {
     public class CircleCaster2D : PhysicsCaster2D {
         public float radius = 0.5f;
         

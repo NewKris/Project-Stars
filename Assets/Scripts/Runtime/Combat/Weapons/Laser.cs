@@ -1,7 +1,6 @@
-using NewKris.Runtime.Ship;
 using UnityEngine;
 
-namespace NewKris.Runtime.Combat.Weapons {
+namespace Werehorse.Runtime.Combat.Weapons {
     public class Laser : Weapon {
         public float minChargeTime;
         public float maxChargeTime;

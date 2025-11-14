@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace NewKris.Runtime.Environment {
+namespace Werehorse.Runtime.Environment {
     public class Tumbler : MonoBehaviour {
         public float maxTumbleSpeed;
         public float minTumbleSpeed;

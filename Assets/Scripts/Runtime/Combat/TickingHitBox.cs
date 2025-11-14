@@ -1,10 +1,9 @@
-using System;
 using System.Collections.Generic;
-using NewKris.Runtime.Utility.Extensions;
 using UnityEngine;
 using UnityEngine.Events;
+using Werehorse.Runtime.Utility.Extensions;
 
-namespace NewKris.Runtime.Combat {
+namespace Werehorse.Runtime.Combat {
     public class TickingHitBox : MonoBehaviour {
         public int damage;
         public float tickRate;

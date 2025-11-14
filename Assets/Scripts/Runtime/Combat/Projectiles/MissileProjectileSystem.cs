@@ -1,10 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using NewKris.Runtime.Utility.CommonObjects;
 using UnityEngine;
+using Werehorse.Runtime.Utility.CommonObjects;
 
-namespace NewKris.Runtime.Combat.Projectiles {
+namespace Werehorse.Runtime.Combat.Projectiles {
     public enum MissileType {
         MISSILE
     }
