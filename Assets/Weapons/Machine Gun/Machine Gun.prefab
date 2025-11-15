@@ -99,7 +99,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9072568464595391452}
-  - component: {fileID: 4674341605456750615}
   - component: {fileID: 7972506827427953562}
   m_Layer: 0
   m_Name: Machine Gun
@@ -125,28 +124,6 @@ Transform:
   - {fileID: 7312051945638387863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4674341605456750615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728371920655964906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f516d04fce2e4b7383121844176c7af4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.MachineGun
-  bulletPrefab: {fileID: 470730067449800906, guid: 4b496c6492e094a498f8ea8c22064b02, type: 3}
-  bulletSpawns:
-  - {fileID: 264322287525409900}
-  - {fileID: 7055272216393414922}
-  bulletSounds:
-  - {fileID: 8300000, guid: 92d35fe1c59bbd14eaee9e3d3b54cea7, type: 3}
-  - {fileID: 8300000, guid: 5207b2a445fcb144281ab5395fe95c1d, type: 3}
-  - {fileID: 8300000, guid: 1e940d15337ad1e43b0cc1b2430d7c06, type: 3}
-  - {fileID: 8300000, guid: 70c97e425596b8142b7b9163256c0868, type: 3}
-  fireRate: 0.1
 --- !u!82 &7972506827427953562
 AudioSource:
   m_ObjectHideFlags: 0
