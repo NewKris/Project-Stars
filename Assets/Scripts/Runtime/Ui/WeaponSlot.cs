@@ -1,8 +1,8 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
-using Werehorse.Runtime.Combat.Weapons;
 using Werehorse.Runtime.Ship.Equipment;
+using Werehorse.Runtime.Ship.Weapons;
 
 namespace Werehorse.Runtime.Ui {
     public enum WeaponHand {

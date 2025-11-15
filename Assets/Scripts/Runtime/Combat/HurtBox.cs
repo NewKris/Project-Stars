@@ -23,10 +23,6 @@ namespace Werehorse.Runtime.Combat {
                 onDeath.Invoke();
             }
         }
-        
-        private void Reset() {
-            gameObject.layer = LayerMask.NameToLayer("Hurt Box");
-        }
 
         private void OnEnable() {
             _health = maxHealth;
