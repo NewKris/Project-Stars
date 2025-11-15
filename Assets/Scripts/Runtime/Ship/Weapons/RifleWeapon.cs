@@ -5,10 +5,7 @@ using Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles;
 namespace Werehorse.Runtime.Ship.Weapons {
     public class RifleWeapon : Weapon {
         public float fireRate;
-        public float rayRadius;
-        public float maxRayDistance;
-        public float minRayDistance;
-        public LayerMask lockOnTargets;
+        public float convergeDistance;
 
         private bool _firing;
         private float _lastFireTime;
@@ -32,20 +29,14 @@ namespace Werehorse.Runtime.Ship.Weapons {
             
             if (SimpleProjectileSystem.GetProjectile(out GameObject projectile)) {
                 projectile.transform.position = transform.position;
-
-                Vector3 dir = GetTarget() - projectile.transform.position;
+                
+                Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
+                Vector3 convergePoint = ray.GetPoint(convergeDistance);
+                Vector3 dir = convergePoint - projectile.transform.position;
                 projectile.transform.rotation = Quaternion.LookRotation(dir);
+                
                 projectile.SetActive(true);
             }
-        }
-
-        private Vector3 GetTarget() {
-            Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
-            
-            bool hitTarget = Physics.SphereCast(ray, rayRadius, out RaycastHit hit, maxRayDistance, lockOnTargets);
-            float distance = hitTarget && hit.distance > minRayDistance ? hit.distance : maxRayDistance;
-            
-            return ray.GetPoint(distance);
         }
     }
 }

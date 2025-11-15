@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6eb418464893447b8fe1977ce2fe465f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.SpaceShip
-  maxFlightSpeed: 50
+  maxFlightSpeed: 1
   accelerationSpeed: 50
   maxPitchSpeed: 50
   maxYawSpeed: 50

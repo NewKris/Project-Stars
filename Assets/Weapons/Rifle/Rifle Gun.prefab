@@ -135,9 +135,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Ship.Weapons.RifleWeapon
   fireRate: 0.2
-  rayRadius: 1
-  maxRayDistance: 1000
-  minRayDistance: 10
-  lockOnTargets:
-    serializedVersion: 2
-    m_Bits: 384
+  convergeDistance: 500
