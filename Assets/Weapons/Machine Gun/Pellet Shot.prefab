@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4467328143781085440}
   - component: {fileID: 1262384340715485278}
   m_Layer: 6
-  m_Name: Friendly Pellet
+  m_Name: Pellet Shot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac29124378d14d5b83b3460f78094220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Ship.Weapons.SimpleProjectile
+  spawnedTime: 0
+  lifeTime: 0.1
   maxSpeed: 500
   direction: {x: 0, y: 0, z: 1}
 --- !u!114 &1262384340715485278

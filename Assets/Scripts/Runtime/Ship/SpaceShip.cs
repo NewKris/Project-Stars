@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using Werehorse.Runtime.Combat;
 using Werehorse.Runtime.Ship.Equipment;
@@ -6,53 +7,28 @@ using Werehorse.Runtime.Utility.Extensions;
 
 namespace Werehorse.Runtime.Ship {
     public class SpaceShip : MonoBehaviour {
-        public float sensitivity;
+        public float maxFlightSpeed;
+        public float accelerationSpeed;
 
-        [Header("Parameters")] 
-        [Range(0,1 )] public float moveSpeed;
-        [Range(0,1 )] public float responsiveness;
-        
-        [Header("Movement")]
-        public float maxMoveSpeed;
-        public float minMoveSpeed;
-        public float maxMoveDamping;
-        public float minMoveDamping;
-
-        [Header("Pitch")] 
-        public float maxPitch;
-        public float pitchDamping;
-        
-        [Header("Roll")]
-        public float maxRoll;
-        public float rollDamping;
+        [Header("Turning")] 
+        public float maxPitchSpeed;
+        public float maxYawSpeed;
+        public float maxRollSpeed;
+        public float turnDamping;
         
         [Header("Miscs")]
         public ShipEquipper equipper;
-        public Transform modelPivot;
-        public Boundary boundary;
-        public Transform reticle;
+        public Rigidbody rigidBody;
+        public RectTransform reticle;
 
-        private Vector3 _velocity;
-        private DampedVector _position;
-        private DampedAngle _roll;
-        private DampedAngle _pitch;
-
-        private float TargetSpeed => Mathf.Lerp(minMoveSpeed, maxMoveSpeed, moveSpeed);
-        private float TargetDamping => Mathf.Lerp(minMoveDamping, maxMoveDamping, 1 - responsiveness);
-
-        private void OnGUI() {
-            GUILayout.BeginArea(new Rect(10, 10, 100, 100));
-            GUILayout.Label($"HP: {GetComponent<HurtBox>().CurrentHealth}");
-            GUILayout.EndArea();
-        }
-
+        private Vector2 _normalizedMousePosition;
+        private DampedRotation _rotation;
+        
         private void Awake() {
             PlayerController.OnBeginFire1 += BeginFire1;
             PlayerController.OnEndFire1 += EndFire1;
             PlayerController.OnBeginFire2 += BeginFire2;
             PlayerController.OnEndFire2 += EndFire2;
-
-            _position = new DampedVector(transform.position);
         }
 
         private void OnDestroy() {
@@ -63,11 +39,7 @@ namespace Werehorse.Runtime.Ship {
         }
 
         private void OnEnable() {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
-
-        private void OnDisable() {
-            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = false;
         }
 
         private void Update() {
@@ -75,28 +47,45 @@ namespace Werehorse.Runtime.Ship {
                 return;
             }
             
+            reticle.position = PlayerController.MousePosition;
+        }
+        
+        private void FixedUpdate() {
+            if (Time.timeScale == 0) {
+                return;
+            }
+            
+            Rotate(Time.fixedDeltaTime);
             Move();
-            RotateModel();
         }
 
+        private void Rotate(float dt) {
+            _normalizedMousePosition = GetNormalizedMousePosition(PlayerController.MousePosition);
+            Vector3 forward = transform.forward;
+            Vector3 up = transform.up;
+            
+            Quaternion pitch = Quaternion.AngleAxis(_normalizedMousePosition.y * -maxPitchSpeed * dt, transform.right);
+            Quaternion yaw = Quaternion.AngleAxis(_normalizedMousePosition.x * maxYawSpeed * dt, transform.up);
+            Quaternion roll = Quaternion.AngleAxis(PlayerController.Roll * -maxRollSpeed * dt, transform.forward);
+            
+            forward = yaw * pitch * forward;
+            up = pitch * roll * up;
+            
+            _rotation.Target = Quaternion.LookRotation(forward, up);
+            transform.rotation = _rotation.Target;
+        }
+        
         private void Move() {
-            Vector3 previousPosition = transform.position;
-            
-            _position.Target = MouseToTargetPosition();
-            _position.Target = Vector3.Max(boundary.MinCorner, _position.Target);
-            _position.Target = Vector3.Min(boundary.MaxCorner, _position.Target);
-            
-            transform.position = _position.Tick(TargetDamping, TargetSpeed);
-            reticle.position = _position.Target;
-
-            _velocity = (transform.position - previousPosition) / Time.deltaTime;
+            Vector3 targetVel = transform.forward * maxFlightSpeed;
+            Vector3 deltaVel = targetVel - rigidBody.linearVelocity;
+            rigidBody.AddForce(deltaVel, ForceMode.VelocityChange);            
         }
 
-        private void RotateModel() {
-            _roll.Target = GetTargetRoll();
-            _pitch.Target = GetTargetPitch();
-
-            modelPivot.localRotation = Quaternion.Euler(_pitch.Tick(pitchDamping), 0, -_roll.Tick(rollDamping));
+        private Vector2 GetNormalizedMousePosition(Vector2 mousePosition) {
+            return new Vector2() {
+                x = Mathf.Lerp(-1, 1, mousePosition.x / Screen.width),
+                y = Mathf.Lerp(-1, 1, mousePosition.y / Screen.height)
+            };
         }
 
         private void BeginFire1() {
@@ -113,18 +102,6 @@ namespace Werehorse.Runtime.Ship {
 
         private void EndFire2() {
             equipper.weapon2?.EndFire();
-        }
-
-        private float GetTargetRoll() {
-            return (_velocity.x / TargetSpeed) * maxRoll;
-        }
-
-        private float GetTargetPitch() {
-            return (_velocity.z / TargetSpeed) * maxPitch;
-        }
-
-        private Vector3 MouseToTargetPosition() {
-            return _position.Target + PlayerController.MousePosition.ProjectOnGround() * sensitivity;
         }
     }
 }

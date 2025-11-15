@@ -15,11 +15,14 @@ namespace Werehorse.Runtime {
 
         private bool _isPaused;
         private InputAction _aimAction;
+        private InputAction _rollAction;
         
+        public static float Roll { get; private set; }
         public static Vector2 MousePosition { get; private set; }
         
         private void Awake() {
             _aimAction = InputSystem.actions["Aim"];
+            _rollAction = InputSystem.actions["Roll"];
             
             InputSystem.actions["Fire1"].performed += _ => OnBeginFire1?.Invoke();
             InputSystem.actions["Fire1"].canceled += _ => OnEndFire1?.Invoke();
@@ -38,6 +41,7 @@ namespace Werehorse.Runtime {
 
         private void Update() {
             MousePosition = _aimAction.ReadValue<Vector2>();
+            Roll = _rollAction.ReadValue<float>();
         }
 
         private void PauseGame() {

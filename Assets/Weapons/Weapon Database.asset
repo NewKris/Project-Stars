@@ -13,7 +13,5 @@ MonoBehaviour:
   m_Name: Weapon Database
   m_EditorClassIdentifier: Assembly-CSharp::NewKris.Runtime.Combat.Weapons.WeaponDatabase
   weapons:
-  - {fileID: 11400000, guid: f73aa7b4d4b42c343ac7c8d17a369760, type: 2}
   - {fileID: 11400000, guid: 61d3eedabf5050f49bcd24e89bfae54f, type: 2}
-  - {fileID: 11400000, guid: f50f2099fb2ec694187651242b3a1755, type: 2}
   - {fileID: 11400000, guid: d498c2c9478fedc48bffcd0220723679, type: 2}

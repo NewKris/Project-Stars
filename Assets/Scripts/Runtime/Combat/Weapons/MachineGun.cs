@@ -36,7 +36,7 @@ namespace Werehorse.Runtime.Combat.Weapons {
         private void SpawnBullet() {
             if (SimpleProjectileSystem.GetProjectile(out GameObject bullet, projectileType)) {
                 bullet.transform.position = bulletSpawns[_nextSpawnIndex].position;
-                bullet.transform.rotation = Quaternion.identity;
+                bullet.transform.rotation = transform.rotation;
                 bullet.gameObject.SetActive(true);
                 PlayBulletSound();
 
