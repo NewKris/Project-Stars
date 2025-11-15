@@ -4,7 +4,7 @@ namespace Werehorse.Runtime.Utility.CommonObjects {
     public struct DampedRotation {
         private float _velocity;
 
-        public Quaternion Current { get; private set; }
+        public Quaternion Current { get; set; }
         public Quaternion Target { get; set; }
 
         public DampedRotation(Quaternion startValue) {

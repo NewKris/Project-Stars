@@ -14,7 +14,9 @@ namespace Werehorse.Runtime.Ship {
         public float maxPitchSpeed;
         public float maxYawSpeed;
         public float maxRollSpeed;
-        public float turnDamping;
+        public float maxTurnSpeed;
+        public float maxTurnAngle;
+        public AnimationCurve turnCurve;
         
         [Header("Miscs")]
         public ShipEquipper equipper;
@@ -22,7 +24,6 @@ namespace Werehorse.Runtime.Ship {
         public RectTransform reticle;
 
         private Vector2 _normalizedMousePosition;
-        private DampedRotation _rotation;
         
         private void Awake() {
             PlayerController.OnBeginFire1 += BeginFire1;
@@ -71,8 +72,13 @@ namespace Werehorse.Runtime.Ship {
             forward = yaw * pitch * forward;
             up = pitch * roll * up;
             
-            _rotation.Target = Quaternion.LookRotation(forward, up);
-            transform.rotation = _rotation.Target;
+            Quaternion targetRot = Quaternion.LookRotation(forward, up);
+            
+            float angle = Quaternion.Angle(transform.rotation, targetRot);
+            float t = angle / maxTurnAngle;
+            float maxDelta = maxTurnSpeed * turnCurve.Evaluate(t) * dt;
+            
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRot, maxDelta);
         }
         
         private void Move() {
