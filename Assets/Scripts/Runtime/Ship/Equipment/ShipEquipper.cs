@@ -18,6 +18,10 @@ namespace Werehorse.Runtime.Ship.Equipment {
         public bool overrideEquipments;
         
         private void Awake() {
+#if !UNITY_EDITOR
+            overrideEquipments = false;
+#endif
+            
             ApplyWeapons();
         }
 

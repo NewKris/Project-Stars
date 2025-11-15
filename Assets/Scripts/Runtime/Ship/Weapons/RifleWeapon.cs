@@ -1,14 +1,20 @@
 ﻿using System;
 using UnityEngine;
 using Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles;
+using Random = UnityEngine.Random;
 
 namespace Werehorse.Runtime.Ship.Weapons {
     public class RifleWeapon : Weapon {
+        public int damage;
         public float fireRate;
         public float convergeDistance;
+        public Transform[] bulletSources;
+        public AudioClip[] shootSounds;
 
         private bool _firing;
         private float _lastFireTime;
+        private int _lastSource;
+        private AudioSource _audio;
         
         private bool CanFire => Time.time > _lastFireTime + fireRate;
         
@@ -20,6 +26,11 @@ namespace Werehorse.Runtime.Ship.Weapons {
             _firing = false;
         }
 
+        private void Awake() {
+            _audio = GetComponent<AudioSource>();
+            _lastSource = 0;
+        }
+
         private void Update() {
             if (!_firing || !CanFire) {
                 return;
@@ -27,16 +38,33 @@ namespace Werehorse.Runtime.Ship.Weapons {
             
             _lastFireTime = Time.time;
             
-            if (SimpleProjectileSystem.GetProjectile(out GameObject projectile)) {
-                projectile.transform.position = transform.position;
+            if (SimpleProjectileSystem.GetProjectile(out SimpleProjectile projectile)) {
+                Vector3 spawnPos = GetNextSpawnPosition();
+                Quaternion rotation = GetBulletRotation(spawnPos);
                 
-                Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
-                Vector3 convergePoint = ray.GetPoint(convergeDistance);
-                Vector3 dir = convergePoint - projectile.transform.position;
-                projectile.transform.rotation = Quaternion.LookRotation(dir);
+                projectile.Initialize(new SimpleProjectileConfig() {
+                    position = spawnPos,
+                    rotation = rotation,
+                    damage = damage
+                });
                 
-                projectile.SetActive(true);
+                _audio.PlayOneShot(shootSounds[Random.Range(0, shootSounds.Length)]);
             }
+        }
+
+        private Quaternion GetBulletRotation(Vector3 spawnPos) {
+            Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
+            Vector3 convergePoint = ray.GetPoint(convergeDistance);
+            Vector3 dir = convergePoint - spawnPos;
+            
+            return Quaternion.LookRotation(dir);
+        }
+
+        private Vector3 GetNextSpawnPosition() {
+            Vector3 spawnPos = bulletSources[_lastSource].position;
+            _lastSource = (_lastSource + 1) % bulletSources.Length;
+
+            return spawnPos;
         }
     }
 }

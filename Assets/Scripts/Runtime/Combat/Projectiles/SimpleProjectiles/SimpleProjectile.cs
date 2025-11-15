@@ -3,6 +3,12 @@ using UnityEngine;
 using Werehorse.Runtime.Utility.Attributes;
 
 namespace Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles {
+    public struct SimpleProjectileConfig {
+        public Vector3 position;
+        public Quaternion rotation;
+        public int damage;
+    }
+    
     public class SimpleProjectile : MonoBehaviour {
         public static event Action<SimpleProjectile> OnSpawned;
         
@@ -10,6 +16,14 @@ namespace Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles {
         public float maxDistance;
         [ReadOnly] public float travelDistance;
 
+        public void Initialize(SimpleProjectileConfig config) {
+            transform.position = config.position;
+            transform.rotation = config.rotation;
+            GetComponentInChildren<HitBox>().damage = config.damage;
+            
+            gameObject.SetActive(true);
+        }
+        
         private void OnEnable() {
             travelDistance = 0;
             OnSpawned?.Invoke(this);

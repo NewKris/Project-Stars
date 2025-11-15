@@ -12,8 +12,11 @@ namespace Werehorse.Runtime.Combat.Projectiles.SimpleProjectiles {
         
         private PrefabPool _pool;
 
-        public static bool GetProjectile(out GameObject projectile) {
-            return Instance._pool.GetObject(out projectile);
+        public static bool GetProjectile(out SimpleProjectile projectile) {
+            bool foundProjectile = Instance._pool.GetObject(out GameObject projectileObj);
+            projectile = projectileObj.GetComponent<SimpleProjectile>();
+            
+            return foundProjectile;
         }
         
         private void Awake() {

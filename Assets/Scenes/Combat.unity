@@ -2987,7 +2987,7 @@ MonoBehaviour:
   weaponParent: {fileID: 1315486446}
   weaponDatabase: {fileID: 11400000, guid: e2654c4e5276a3b4ebbab9e5939d9ffa, type: 2}
   id1: 0
-  id2: -1
+  id2: 1
   overrideEquipments: 1
 --- !u!1001 &1806351489
 PrefabInstance:
