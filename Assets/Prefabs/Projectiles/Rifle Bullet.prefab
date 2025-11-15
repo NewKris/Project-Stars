@@ -177,7 +177,7 @@ MonoBehaviour:
   damage: 5
   canHitFaction:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 384
   onHit:
     m_PersistentCalls:
       m_Calls:
