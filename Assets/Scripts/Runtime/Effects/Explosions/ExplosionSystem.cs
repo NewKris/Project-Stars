@@ -1,7 +1,8 @@
 using UnityEngine;
+using Werehorse.Runtime.Combat;
 using Werehorse.Runtime.Utility.CommonObjects;
 
-namespace Werehorse.Runtime.Combat.Projectiles {
+namespace Werehorse.Runtime.Effects.Explosions {
     public class ExplosionSystem : MonoBehaviour {
         private static ExplosionSystem Instance;
 

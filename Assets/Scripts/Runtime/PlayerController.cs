@@ -8,6 +8,7 @@ namespace Werehorse.Runtime {
         public static event Action OnEndFire1;
         public static event Action OnBeginFire2;
         public static event Action OnEndFire2;
+        public static event Action OnTest;
         
         private static PlayerController Instance;
 
@@ -31,6 +32,8 @@ namespace Werehorse.Runtime {
             InputSystem.actions["Fire2"].canceled += _ => OnEndFire2?.Invoke();
             
             InputSystem.actions["Pause"].performed += _ => PauseGame();
+            
+            InputSystem.actions["Test"].performed += _ => OnTest?.Invoke();
             
             InputSystem.actions.actionMaps[shipActionMap].Enable();
         }

@@ -251,8 +251,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5105454983904056864}
-  - component: {fileID: 1069436830305753810}
   - component: {fileID: 5548148434388269101}
+  - component: {fileID: 3598488989798391189}
   m_Layer: 0
   m_Name: Machine Gun
   m_TagString: Untagged
@@ -277,29 +277,6 @@ Transform:
   - {fileID: 1155438735070455369}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1069436830305753810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7704827966483984664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b6ceffd717147bfa1b2af7a65179446, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Ship.Weapons.RifleWeapon
-  damage: 2
-  fireRate: 0.1
-  convergeDistance: 500
-  bulletSources:
-  - {fileID: 5739151829839400919}
-  - {fileID: 8931703393435369622}
-  shootSounds:
-  - {fileID: 8300000, guid: 92d35fe1c59bbd14eaee9e3d3b54cea7, type: 3}
-  - {fileID: 8300000, guid: 5207b2a445fcb144281ab5395fe95c1d, type: 3}
-  - {fileID: 8300000, guid: 1e940d15337ad1e43b0cc1b2430d7c06, type: 3}
-  - {fileID: 8300000, guid: 70c97e425596b8142b7b9163256c0868, type: 3}
 --- !u!82 &5548148434388269101
 AudioSource:
   m_ObjectHideFlags: 0
@@ -397,3 +374,26 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3598488989798391189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7704827966483984664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6398f698c8784b8c8df434925dc94ffa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Ship.Weapons.HitScanWeapon
+  fireRate: 0.1
+  maxRange: 1000
+  damage: 2
+  targetMasks:
+    serializedVersion: 2
+    m_Bits: 128
+  shootSounds:
+  - {fileID: 8300000, guid: 92d35fe1c59bbd14eaee9e3d3b54cea7, type: 3}
+  - {fileID: 8300000, guid: 5207b2a445fcb144281ab5395fe95c1d, type: 3}
+  - {fileID: 8300000, guid: 1e940d15337ad1e43b0cc1b2430d7c06, type: 3}
+  - {fileID: 8300000, guid: 70c97e425596b8142b7b9163256c0868, type: 3}
