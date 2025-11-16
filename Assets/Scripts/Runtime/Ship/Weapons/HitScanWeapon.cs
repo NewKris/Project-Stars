@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 using Werehorse.Runtime.Combat;
+using Werehorse.Runtime.Combat.Projectiles.FakeProjectiles;
 using Werehorse.Runtime.Effects.Sparks;
 using Random = UnityEngine.Random;
 
@@ -11,9 +12,11 @@ namespace Werehorse.Runtime.Ship.Weapons {
         public int damage;
         public LayerMask targetMasks;
         public AudioClip[] shootSounds;
+        public Transform[] bulletSources;
 
         private bool _firing;
         private float _lastFireTime;
+        private int _lastBulletSource;
         private AudioSource _audio;
         
         private bool CanFire => Time.time > _lastFireTime + fireRate;
@@ -38,14 +41,23 @@ namespace Werehorse.Runtime.Ship.Weapons {
             _lastFireTime = Time.time;
             _audio.PlayOneShot(shootSounds[Random.Range(0, shootSounds.Length)]);
 
+            Vector3 hitPos;
             Ray ray = Camera.main.ScreenPointToRay(PlayerController.MousePosition);
+            
             if (Physics.Raycast(ray, out RaycastHit hit, maxRange, targetMasks)) {
                 SparksSystem.PlaySparks(hit.point, hit.normal);
+                hitPos = hit.point;
 
                 if (hit.collider.TryGetComponent(out HurtBox hurtBox)) {
                     hurtBox.TakeDamage(damage);
                 }
             }
+            else {
+                hitPos = ray.GetPoint(maxRange);
+            }
+            
+            FakeProjectileSystem.ShootFakeProjectile(bulletSources[_lastBulletSource].position, hitPos);
+            _lastBulletSource = (_lastBulletSource + 1) % bulletSources.Length;
         }
     }
 }
