@@ -53,7 +53,7 @@ namespace Werehorse.Runtime.Hub {
 
         private void Update() {
             if (Time.deltaTime <= 0) {
-                // For some reason this can happen on scene-switch, which causes NaNs on SmoothDamp
+                // For some reason this can happen on rapid scene-switching, which causes NaNs on SmoothDamp
                 return;
             }
             
