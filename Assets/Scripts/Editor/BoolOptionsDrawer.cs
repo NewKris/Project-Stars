@@ -1,6 +1,6 @@
 ﻿using UnityEditor;
 using UnityEngine;
-using Werehorse.Runtime.Utility.Attributes;
+using Werehorse.Runtime.ShipCombat.Utility.Attributes;
 
 namespace Werehorse.Editor {
 	[CustomPropertyDrawer(typeof(BoolOptions))]
