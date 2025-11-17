@@ -12,32 +12,34 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
         public Transform weaponParent;
         public WeaponDatabase weaponDatabase;
 
-        [Header("Overrides")] 
-        public int id1;
-        public int id2;
-        public bool overrideEquipments;
+        [Header("Overrides")] [InspectorButton(nameof(ClearEquipmentCache), "Clear Cache")] 
+        public EquipmentBlackBoard defaultEquipments;
         
         private void Awake() {
-#if !UNITY_EDITOR
-            overrideEquipments = false;
-#endif
-            
             ApplyWeapons();
         }
 
         private void ApplyWeapons() {
             try {
-                int weaponId1 = overrideEquipments ? id1 : EquipmentBlackBoard.weapon1Id;
-                int weaponId2 = overrideEquipments ? id2 : EquipmentBlackBoard.weapon2Id;
+                if (!EquipmentBlackBoard.HasEquipment) {
+                    Debug.Log("Using default equipments");
+                }
+                
+                EquipmentBlackBoard equipment = EquipmentBlackBoard.HasEquipment
+                    ? EquipmentBlackBoard.CurrentEquipment
+                    : defaultEquipments;
+                
+                int weaponId1 = equipment.weapon1Id;
+                int weaponId2 = equipment.weapon2Id;
 
-                if (weaponId1 != -1) {
+                if (weaponId1 >= 0) {
                     WeaponData weapon1Data = weaponDatabase.weapons.First(x => x.id == weaponId1);
                     GameObject weapon1Prefab = Instantiate(weapon1Data.prefab, weaponParent);
                     weapon1Prefab.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
                     weapon1 = weapon1Prefab.GetComponent<Weapon>();
                 }
 
-                if (weaponId2 != -1) {
+                if (weaponId2 >= 0) {
                     WeaponData weapon2Data = weaponDatabase.weapons.First(x => x.id == weaponId2);
                     GameObject weapon2Prefab = Instantiate(weapon2Data.prefab, weaponParent);
                     weapon2Prefab.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
@@ -47,6 +49,11 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
             catch (Exception e) {
                 Debug.LogError($"Failed to equip weapons. Reason: {e}");
             }
+        }
+
+        private void ClearEquipmentCache() {
+            Debug.Log("Cleared equipment cache");
+            EquipmentBlackBoard.SetCurrentEquipment(null);
         }
     }
 }
