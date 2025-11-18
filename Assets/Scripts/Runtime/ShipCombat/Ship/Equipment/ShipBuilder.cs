@@ -14,6 +14,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
         public RectTransform reticle;
         public ShipDatabase shipDatabase;
         public WeaponDatabase weaponDatabase;
+        public GameObject gameOverScreen;
 
         [Header("Overrides")] [InspectorButton(nameof(ClearEquipmentCache), "Clear Cache")] 
         public EquipmentBlackBoard defaultEquipments;
@@ -21,17 +22,18 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
         private void Awake() {
             EquipmentBlackBoard equipment = EquipmentBlackBoard.HasEquipment ? EquipmentBlackBoard.CurrentEquipment : defaultEquipments;
             
-            PlaneShip ship = SpawnBaseShip(equipment.shipBaseId).GetComponent<PlaneShip>();
+            PlaneShip ship = SpawnBaseShip(equipment.shipBaseId);
             ship.weapon1 = SpawnWeapon(equipment.weapon1Id, ship.transform);
             ship.weapon2 = SpawnWeapon(equipment.weapon2Id, ship.transform);
 
             shipCamera.SetTarget(ship.transform, true);
         }
 
-        private GameObject SpawnBaseShip(int id) {
+        private PlaneShip SpawnBaseShip(int id) {
             GameObject shipPrefab = shipDatabase.GetShipData(id).shipBasePrefab;
-            GameObject instance = Instantiate(shipPrefab, spawnPoint.position, spawnPoint.rotation, transform);
-            instance.GetComponent<PlaneShip>().reticle = reticle;
+            PlaneShip instance = Instantiate(shipPrefab, spawnPoint.position, spawnPoint.rotation, transform).GetComponent<PlaneShip>();
+            instance.reticle = reticle;
+            instance.gameOverScreen = gameOverScreen;
             
             return instance;
         }

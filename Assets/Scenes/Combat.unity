@@ -150,6 +150,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &42937678
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 42937679}
+  - component: {fileID: 42937681}
+  - component: {fileID: 42937680}
+  m_Layer: 7
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &42937679
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42937678}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1448621882}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &42937680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42937678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c0d3231a2a041ffaf4125035814d817, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.ShipCombat.Combat.HitBox
+  damage: 100
+  canHitFaction:
+    serializedVersion: 2
+    m_Bits: 192
+  onHit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1448621878}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!135 &42937681
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42937678}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 1.04
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -414,6 +499,11 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1 &505490507 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8010629599890509578, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
+  m_PrefabInstance: {fileID: 1806351489}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &536918094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1120,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &776539329 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8010629599890509578, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
+  m_PrefabInstance: {fileID: 8879277921852548336}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &776539336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 776539329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55afa9ec5301430a864ee38e6d5ec7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Common.Door
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1575,6 +1682,7 @@ MonoBehaviour:
   reticle: {fileID: 1993158347}
   shipDatabase: {fileID: 11400000, guid: 4976197e605dce646a748381e192e6a6, type: 2}
   weaponDatabase: {fileID: 11400000, guid: e2654c4e5276a3b4ebbab9e5939d9ffa, type: 2}
+  gameOverScreen: {fileID: 1222687718}
   defaultEquipments:
     shipBaseId: 0
     weapon1Id: 0
@@ -2488,7 +2596,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 249.8}
   m_LocalScale: {x: 12.11, y: 12.11, z: 12.11}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 42937679}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1448621883
@@ -3454,14 +3563,18 @@ PrefabInstance:
     - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 941603378}
+      objectReference: {fileID: 1806351497}
     - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToScene
       objectReference: {fileID: 0}
     - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Werehorse.Runtime.Common.Door, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_Pivot.x
@@ -3493,7 +3606,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3550,13 +3663,28 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8010629599890509578, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1806351497}
   m_SourcePrefab: {fileID: 100100000, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
 --- !u!224 &1806351490 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
   m_PrefabInstance: {fileID: 1806351489}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1806351497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505490507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55afa9ec5301430a864ee38e6d5ec7c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Common.Door
 --- !u!1 &1902065255
 GameObject:
   m_ObjectHideFlags: 0
@@ -3971,10 +4099,14 @@ PrefabInstance:
     - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 941603378}
+      objectReference: {fileID: 776539336}
     - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: GoToScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Werehorse.Runtime.Common.Door, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 5498587822772626056, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
@@ -4010,7 +4142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4067,7 +4199,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8010629599890509578, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 776539336}
   m_SourcePrefab: {fileID: 100100000, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
 --- !u!1001 &8902709522376749189
 PrefabInstance:

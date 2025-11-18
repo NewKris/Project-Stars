@@ -383,8 +383,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Hangar.HangarController
   defaultEquipments:
+    shipBaseId: 0
     weapon1Id: 0
-    weapon2Id: -1
+    weapon2Id: 1
 --- !u!1 &464498247
 GameObject:
   m_ObjectHideFlags: 0

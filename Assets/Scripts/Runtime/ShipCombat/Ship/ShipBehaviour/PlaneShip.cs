@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Werehorse.Runtime.ShipCombat.Ship.Weapons;
 
@@ -21,9 +22,16 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
         [Header("Miscs")]
         public Rigidbody rigidBody;
         public RectTransform reticle;
+        public GameObject gameOverScreen;
 
         private bool _mouseSteering = true;
         private Vector2 _normalizedMousePosition;
+        
+        public void Die() {
+            gameOverScreen.SetActive(true);
+            gameObject.SetActive(false);
+            SetCursorVisibility(true);
+        }
         
         private void Awake() {
             PlayerShipController.OnBeginFire1 += BeginFire1;
@@ -32,9 +40,9 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
             PlayerShipController.OnEndFire2 += EndFire2;
             PlayerShipController.OnToggleSteering += ToggleSteerMode;
 
-            PauseManager.OnPauseToggled += ToggleCursorVisibility;
+            PauseManager.OnPauseToggled += SetCursorVisibility;
             
-            ToggleCursorVisibility(false);
+            SetCursorVisibility(false);
         }
 
         private void OnDestroy() {
@@ -44,7 +52,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
             PlayerShipController.OnEndFire2 -= EndFire2;
             PlayerShipController.OnToggleSteering -= ToggleSteerMode;
             
-            PauseManager.OnPauseToggled -= ToggleCursorVisibility;
+            PauseManager.OnPauseToggled -= SetCursorVisibility;
         }
 
         private void Update() {
@@ -134,7 +142,7 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
             weapon2?.EndFire();
         }
 
-        private void ToggleCursorVisibility(bool showCursor) {
+        private void SetCursorVisibility(bool showCursor) {
             Cursor.lockState = showCursor ? CursorLockMode.None : CursorLockMode.Confined;
             Cursor.visible = showCursor;
         }

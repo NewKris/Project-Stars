@@ -12,6 +12,12 @@ namespace Werehorse.Runtime.ShipCombat {
             Time.timeScale = IsPaused ? 0 : 1;
             OnPauseToggled?.Invoke(IsPaused);
         }
+
+        public static void SetPause(bool paused) {
+            IsPaused = paused;
+            Time.timeScale = IsPaused ? 0 : 1;
+            OnPauseToggled?.Invoke(IsPaused);
+        }
         
         private void Awake() {
             PlayerShipController.OnPause += TogglePause;
