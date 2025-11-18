@@ -1415,8 +1415,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Ship.Drone
   target: {fileID: 0}
-  followDamping: 0.2
-  rotateDamping: 0.5
+  defaultFollowDamping: 0.2
+  defaultRotateDamping: 0.5
 --- !u!1 &1011290761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1684,7 +1684,7 @@ MonoBehaviour:
   weaponDatabase: {fileID: 11400000, guid: e2654c4e5276a3b4ebbab9e5939d9ffa, type: 2}
   gameOverScreen: {fileID: 1222687718}
   defaultEquipments:
-    shipBaseId: 0
+    shipBaseId: 2
     weapon1Id: 0
     weapon2Id: 1
 --- !u!1 &1093756621

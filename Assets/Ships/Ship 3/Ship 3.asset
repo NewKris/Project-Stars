@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ecf4a2259d4461ab1fba7151685006, type: 3}
-  m_Name: Ship 1
+  m_Name: Ship 3
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.ShipCombat.Ship.ShipBases.ShipBaseData
-  id: 0
-  shipBasePrefab: {fileID: 1526130855515381176, guid: 0268776bdcb520547a96a2b83b7b1130, type: 3}
+  id: 2
+  shipBasePrefab: {fileID: 6306986104966351231, guid: 9e6ec92e46f702940a379019a284b57b, type: 3}
   icon: {fileID: 0}
-  weaponSlots: 2
+  weaponSlots: 1
   maxUpgradeSlots: 0

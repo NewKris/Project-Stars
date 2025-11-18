@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.ShipCombat.Ship.ShipBases.ShipDatabase
   ships:
   - {fileID: 11400000, guid: 5f8d0dd0caa9aa2489fffe105d2ae4be, type: 2}
+  - {fileID: 11400000, guid: 57cf9fa610db2f64b93f1e32e3a338bf, type: 2}
+  - {fileID: 11400000, guid: 4d00c5701699a774fab600fa061c92dd, type: 2}

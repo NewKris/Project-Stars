@@ -6,5 +6,9 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBases {
         public int id;
         public GameObject shipBasePrefab;
         public Sprite icon;
+
+        [Header("Equipment")] 
+        [Range(1, 4)] public int weaponSlots;
+        public int maxUpgradeSlots;
     }
 }

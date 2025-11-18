@@ -26,7 +26,10 @@ namespace Werehorse.Runtime.ShipCombat.Ship.Equipment {
             ship.weapon1 = SpawnWeapon(equipment.weapon1Id, ship.transform);
             ship.weapon2 = SpawnWeapon(equipment.weapon2Id, ship.transform);
 
-            shipCamera.SetTarget(ship.transform, true);
+            float followDamping = ship.overrideCameraDamping ? ship.followDamping : -1;
+            float rotateDamping = ship.overrideCameraDamping ? ship.rotateDamping : -1;
+            
+            shipCamera.SetTarget(ship.transform, followDamping, rotateDamping, true);
         }
 
         private PlaneShip SpawnBaseShip(int id) {

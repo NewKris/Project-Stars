@@ -18,6 +18,11 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
         [Header("Weapons")] 
         public Weapon weapon1;
         public Weapon weapon2;
+
+        [Header("Camera")] 
+        public bool overrideCameraDamping;
+        public float followDamping;
+        public float rotateDamping;
         
         [Header("Miscs")]
         public Rigidbody rigidBody;
