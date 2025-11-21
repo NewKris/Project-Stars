@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Werehorse.Runtime.Utility.CommonObjects;
 
-namespace Werehorse.Runtime.SpaceCombat.SpaceShip {
+namespace Werehorse.Runtime.SpaceCombat {
     public class Drone : MonoBehaviour {
         public Transform target;
         public float defaultFollowDamping;
@@ -38,6 +38,10 @@ namespace Werehorse.Runtime.SpaceCombat.SpaceShip {
         }
 
         private void Update() {
+            if (!target) {
+                return;
+            }
+            
             _position.Target = target.position;
             transform.position = _position.Tick(_followDamping);
             

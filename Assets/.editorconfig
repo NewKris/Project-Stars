@@ -76,7 +76,7 @@ csharp_style_expression_bodied_indexers = false:error
 csharp_style_expression_bodied_local_functions = false:error
 csharp_style_expression_bodied_methods = false:error
 csharp_style_expression_bodied_operators = false:error
-csharp_style_expression_bodied_properties = true:error
+#csharp_style_expression_bodied_properties = true:error
 csharp_style_expression_bodied_lambdas = true:error
 
 # Pattern matching preferences

@@ -162,6 +162,7 @@ GameObject:
   - component: {fileID: 330585545}
   - component: {fileID: 330585544}
   - component: {fileID: 330585547}
+  - component: {fileID: 330585548}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -237,11 +238,11 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4, z: -16.1}
+  m_LocalPosition: {x: 0, y: 1.5, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1006812372}
+  m_Father: {fileID: 1027973971}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &330585547
 MonoBehaviour:
@@ -287,6 +288,32 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &330585548
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: faa94608bf236e94e91a9d65fd01d56f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.ThirdPersonCamera
+  isActive: 0
+  sensitivity: 1
+  cameraDamping: 0.1
+  target: {fileID: 2090095759}
+  pivotOffset: {x: 0, y: 1.5, z: 0}
+  yawScaling: 1
+  pitchScaling: 1
+  minAngle: -80
+  maxAngle: 80
+  armLength: 5
+  radius: 0.5
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1369,54 +1396,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!1 &1006812371
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1006812372}
-  - component: {fileID: 1006812373}
-  m_Layer: 0
-  m_Name: Camera Pivot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1006812372
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006812371}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 330585546}
-  m_Father: {fileID: 1027973971}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1006812373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1006812371}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ed8661fb4054d7fb54d715b2464a34e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.Ship.Drone
-  target: {fileID: 0}
-  defaultFollowDamping: 0.2
-  defaultRotateDamping: 0.5
 --- !u!1 &1011290761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1626,7 +1605,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1027973971}
   - component: {fileID: 1027973972}
-  - component: {fileID: 1027973973}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1647,9 +1625,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1006812372}
+  - {fileID: 330585546}
   - {fileID: 1093756622}
   - {fileID: 1573359737}
+  - {fileID: 2090095759}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1027973972
@@ -1661,32 +1640,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1027973970}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 575881b688bfae843ab132f82ce6c7b1, type: 3}
+  m_Script: {fileID: 11500000, guid: d10e4cb5171e42afaf96bf89c809525c, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.PlayerController
-  shipActionMap: 1
---- !u!114 &1027973973
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1027973970}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c7dda58e558e407aace20578a9662fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.ShipCombat.Ship.Equipment.ShipBuilder
-  spawnPoint: {fileID: 1573359737}
-  shipCamera: {fileID: 1006812373}
-  reticle: {fileID: 1993158347}
-  shipDatabase: {fileID: 11400000, guid: 4976197e605dce646a748381e192e6a6, type: 2}
-  weaponDatabase: {fileID: 11400000, guid: e2654c4e5276a3b4ebbab9e5939d9ffa, type: 2}
-  gameOverScreen: {fileID: 1222687718}
-  defaultEquipments:
-    shipBaseId: 2
-    weapon1Id: 0
-    weapon2Id: 1
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.PlayerMechController
+  actionMapIndex: 2
 --- !u!1 &1093756621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3544,6 +3501,68 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1729384411}
   m_CullTransparentMesh: 1
+--- !u!1001 &1759686410
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2090095759}
+    m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+      propertyPath: m_Name
+      value: Vanguard By T. Choonyung
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+--- !u!4 &1759686411 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8047d4be1ee85b245b127ad5acec7cd7, type: 3}
+  m_PrefabInstance: {fileID: 1759686410}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1806351489
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3961,6 +3980,69 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7492632319920115598, guid: 6b07bfe2024ae36439b3a7d5c6ddaba8, type: 3}
   m_PrefabInstance: {fileID: 1999169982}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2090095758
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2090095759}
+  - component: {fileID: 2090095760}
+  m_Layer: 0
+  m_Name: Placeholder Mech
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2090095759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090095758}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1759686411}
+  m_Father: {fileID: 1027973971}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2090095760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090095758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb0e9c13e7949a3b5ea898d2a28bec8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.MechaController
+  thirdPersonCamera: {fileID: 330585548}
+  maxStrafeSpeed: 0
+  maxRotateSpeed: 0
+  maxFlightSpeed: 0
+  maxAcceleration: 0
+  maxPitchSpeed: 0
+  maxYawSpeed: 0
+  maxRollSpeed: 0
+  maxTurnSpeed: 0
+  maxTurnAngle: 0
+  turnCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  rigidBody: {fileID: 0}
+  reticle: {fileID: 0}
 --- !u!1 &2111591542
 GameObject:
   m_ObjectHideFlags: 0

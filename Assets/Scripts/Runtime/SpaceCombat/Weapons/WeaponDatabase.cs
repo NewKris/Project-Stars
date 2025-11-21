@@ -2,7 +2,7 @@ using System.Linq;
 using UnityEngine;
 
 namespace Werehorse.Runtime.SpaceCombat.Weapons {
-    [CreateAssetMenu(menuName = "Weapon Database")]
+    [CreateAssetMenu(menuName = "Weapons/Weapon Database")]
     public class WeaponDatabase : ScriptableObject {
         public WeaponData[] weapons;
 
