@@ -1,12 +1,12 @@
 using UnityEngine;
+using Werehorse.Runtime.Utility.CommonObjects;
 
 namespace Werehorse.Runtime.SpaceCombat.Mecha {
     public class ThirdPersonCamera : MonoBehaviour {
-        public bool isActive;
         public float sensitivity = 1;
         public float cameraDamping;
 
-        [Header("Target")] 
+        [Header("Drone")] 
         public Transform target;
         public Vector3 pivotOffset;
         
@@ -23,43 +23,33 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         public float radius;
         public LayerMask collisionMask;
 
-        private bool _followTargetRotation;
         private float _pitch;
         private float _yaw;
         private Vector2 _axisScaling;
         private Vector2 _deltaMouse;
-        private Vector3 _cameraVelocity;
-        private Vector3 _aimTargetVelocity;
-        private GameObject _root;
-        private GameObject _pitchPivot;
-        private GameObject _yawPivot;
-        private GameObject _armEnd;
+        private DampedVector _position;
+        
+        private Transform _pitchPivot;
+        private Transform _yawPivot;
+        private Transform _armEnd;
+
+        public float CurrentYaw => _yawPivot.localRotation.eulerAngles.y;
+        public Quaternion StrafeSpace => _yawPivot.rotation;
         
         private float PitchRotation {
-            get => _pitchPivot.transform.localRotation.eulerAngles.x;
-            set => _pitchPivot.transform.localRotation = Quaternion.Euler(value, 0, 0);
+            get => _pitchPivot.localRotation.eulerAngles.x;
+            set => _pitchPivot.localRotation = Quaternion.Euler(value, 0, 0);
         }
 
         private float YawRotation {
-            get => _yawPivot.transform.localRotation.eulerAngles.y;
-            set => _yawPivot.transform.localRotation = Quaternion.Euler(0, value, 0);
+            get => _yawPivot.localRotation.eulerAngles.y;
+            set => _yawPivot.localRotation = Quaternion.Euler(0, value, 0);
         }
 
-        private Vector3 CurrentPivotPosition => _pitchPivot.transform.position;
-        private Vector3 TargetPivotPosition => target.position + target.TransformDirection(pivotOffset);
-        private Vector3 PitchForward => _pitchPivot.transform.forward;
-        private Vector3 TargetForward => target.forward;
-        private Vector3 TargetUp => target.up;
-
-        public void SetFollowTargetRotation(bool followParentRotation) {
-            _followTargetRotation = followParentRotation;
-        }
+        private Vector3 CurrentPivotPosition => _pitchPivot.position;
+        private Vector3 TargetPivotPosition => target.position + pivotOffset;
+        private Vector3 SpringArmDirection => -_pitchPivot.forward;
         
-        public void SetIsActive(bool active) {
-            Cursor.lockState = active ? CursorLockMode.Locked : CursorLockMode.None;
-            isActive = active;
-        }
-
         public void Look(Vector2 deltaMouse) {
             _deltaMouse = deltaMouse;
         }
@@ -68,77 +58,31 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             if (!target) {
                 return;
             }
-
-            transform.position = CalculateArmEndPosition(TargetPivotPosition, -TargetForward, armLength);
+            
+            transform.position = CalculateArmEndPosition(TargetPivotPosition, -target.forward, armLength);
             transform.LookAt(TargetPivotPosition);
         }
 
         private void Awake() {
-            _root = new GameObject("Camera Root");
-            _root.transform.SetParent(transform.parent);
-            
-            _yawPivot = new GameObject("Yaw Pivot");
-            _yawPivot.transform.SetParent(transform.parent);
-            
-            if (target) {
-                _yawPivot.transform.position = TargetPivotPosition;
-            }
-            
-            _pitchPivot = new GameObject("Pitch Pivot");
-            _pitchPivot.transform.SetParent(_yawPivot.transform);
-            _pitchPivot.transform.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
-            
-            _armEnd = new GameObject("Arm End");
+            BuildHierarchy();
+            ResetCameraTransform();
             
             _pitch = PitchRotation;
             _yaw = YawRotation;
             _axisScaling = new Vector2(pitchScaling, yawScaling) * sensitivity;
+            
+            if (target) {
+                _yawPivot.position = target.position;
+            }
         }
 
         private void Update() {
-            if (!isActive || !target) {
-                return;
-            }
-            
             Move();
-            
-            if (_followTargetRotation) {
-                FollowTargetRotation();
-            }
-            else {
-                RotatePivots();
-            }
-            
-            MoveCamera();
-        }
-        
-        private void Move() {
-            _root.transform.position = target.position;
+            Rotate();
+            Look();
         }
 
-        private void FollowTargetRotation() {
-            _root.transform.SetPositionAndRotation(target.position, target.rotation);
-            
-            _pitch = 0;
-            _yaw = 0;
-            PitchRotation = _pitch;
-            YawRotation = _yaw;
-        }
-
-        private void MoveCamera() {
-            _armEnd.transform.position = CalculateArmEndPosition(CurrentPivotPosition, -PitchForward, armLength);
-
-            transform.position = Vector3.SmoothDamp(
-                transform.position, 
-                _armEnd.transform.position, 
-                ref _cameraVelocity,
-                cameraDamping
-            );
-            
-            transform.LookAt(CurrentPivotPosition);
-        }
-        
-        private void RotatePivots() {
+        private void Rotate() {
             Vector2 velocity = Vector2.Scale(_deltaMouse, _axisScaling);
 
             _pitch -= velocity.y;
@@ -148,6 +92,21 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             _yaw += velocity.x;
             _yaw %= 360;
             YawRotation = _yaw;
+
+            _armEnd.position = CalculateArmEndPosition(CurrentPivotPosition, SpringArmDirection, armLength);
+            _position.Target = _armEnd.position;
+            
+            transform.position = _position.Tick(cameraDamping);
+        }
+
+        private void Look() {
+            transform.LookAt(CurrentPivotPosition);
+        }
+        
+        private void Move() {
+            if (target) {
+                _yawPivot.position = target.position;
+            }
         }
 
         private Vector3 CalculateArmEndPosition(Vector3 start, Vector3 dir, float maxLength) {
@@ -164,17 +123,38 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             return maxLength;
         }
 
+        private void BuildHierarchy() {
+            _yawPivot = new GameObject("Yaw Pivot").transform;
+            _yawPivot.SetParent(transform.parent);
+            _yawPivot.SetLocalPositionAndRotation(Vector3.zero, Quaternion.identity);
+            
+            _pitchPivot = new GameObject("Pitch Pivot").transform;
+            _pitchPivot.SetParent(_yawPivot.transform);
+            _pitchPivot.SetLocalPositionAndRotation(pivotOffset, Quaternion.identity);
+            
+            _armEnd = new GameObject("Arm End").transform;
+            _armEnd.SetParent(transform.parent);
+            _armEnd.localRotation = Quaternion.identity;
+            _armEnd.position = CalculateArmEndPosition(CurrentPivotPosition, SpringArmDirection, armLength);
+        }
+
+        private void ResetCameraTransform() {
+            _position = new DampedVector(_armEnd.position);
+            transform.position = _position.Current;
+            transform.LookAt(CurrentPivotPosition);
+        }
+        
         private void OnDrawGizmos() {
             if (!target) {
                 return;
             }
             
             Vector3 start = _pitchPivot == null ? TargetPivotPosition : CurrentPivotPosition;
-            Vector3 forward = _pitchPivot == null ? TargetForward : PitchForward;
+            Vector3 dir = _pitchPivot == null ? -target.forward : SpringArmDirection;
             
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(start, -forward * armLength);
-            Gizmos.DrawWireSphere(CalculateArmEndPosition(start, -forward, armLength), radius);
+            Gizmos.DrawRay(start, dir * armLength);
+            Gizmos.DrawWireSphere(CalculateArmEndPosition(start, dir, armLength), radius);
         }
     }
 }

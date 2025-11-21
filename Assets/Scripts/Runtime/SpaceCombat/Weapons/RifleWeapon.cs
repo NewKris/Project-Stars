@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Werehorse.Runtime.SpaceCombat.Projectiles.SimpleProjectiles;
+using Werehorse.Runtime.SpaceCombat.SpaceShip;
 using Random = UnityEngine.Random;
 
 namespace Werehorse.Runtime.SpaceCombat.Weapons {

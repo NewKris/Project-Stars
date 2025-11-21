@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Werehorse.Runtime.SpaceCombat {
+namespace Werehorse.Runtime.SpaceCombat.SpaceShip {
     public class PlayerShipController : MonoBehaviour {
         public static event Action OnBeginFire1;
         public static event Action OnEndFire1;

@@ -2,6 +2,7 @@
 using Werehorse.Runtime.SpaceCombat.Boxes;
 using Werehorse.Runtime.SpaceCombat.Effects.Sparks;
 using Werehorse.Runtime.SpaceCombat.Projectiles.FakeProjectiles;
+using Werehorse.Runtime.SpaceCombat.SpaceShip;
 using Random = UnityEngine.Random;
 
 namespace Werehorse.Runtime.SpaceCombat.Weapons {

@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Werehorse.Runtime.SpaceCombat.SpaceShip;
 
 namespace Werehorse.Runtime.SpaceCombat {
     public class PauseManager : MonoBehaviour {

@@ -24,7 +24,7 @@ namespace Werehorse.Runtime.Utility.CommonObjects {
             if (deltaAngle > 0) {
                 float t = Mathf.SmoothDampAngle(deltaAngle, 0, ref _velocity, damping, Mathf.Infinity, deltaTime);
                 t = 1 - (t / deltaAngle);
-                Current = Quaternion.Slerp(Current, Target, t);
+                Current = Quaternion.SlerpUnclamped(Current, Target, t);
             }
             
             return Current;
