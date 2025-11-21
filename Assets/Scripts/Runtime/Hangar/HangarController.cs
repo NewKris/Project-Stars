@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using Werehorse.Runtime.ShipCombat.Ship.Equipment;
+using Werehorse.Runtime.SpaceCombat.SpaceShip.Equipment;
 using Werehorse.Runtime.Utility.Attributes;
 
 namespace Werehorse.Runtime.Hangar {

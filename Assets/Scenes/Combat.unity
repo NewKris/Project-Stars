@@ -1664,7 +1664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 575881b688bfae843ab132f82ce6c7b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.PlayerController
-  shipActionMap: 0
+  shipActionMap: 1
 --- !u!114 &1027973973
 MonoBehaviour:
   m_ObjectHideFlags: 0
