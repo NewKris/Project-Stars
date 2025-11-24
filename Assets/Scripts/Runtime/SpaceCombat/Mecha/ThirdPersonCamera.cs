@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using Werehorse.Runtime.Utility.CommonObjects;
 
@@ -5,6 +6,7 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
     public class ThirdPersonCamera : MonoBehaviour {
         public float sensitivity = 1;
         public float cameraDamping;
+        public float lookDamping;
 
         [Header("Drone")] 
         public Transform target;
@@ -77,8 +79,11 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         }
 
         private void Update() {
-            Move();
             Rotate();
+        }
+
+        private void FixedUpdate() {
+            Move();
             Look();
         }
 
@@ -95,8 +100,6 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
 
             _armEnd.position = CalculateArmEndPosition(CurrentPivotPosition, SpringArmDirection, armLength);
             _position.Target = _armEnd.position;
-            
-            transform.position = _position.Tick(cameraDamping);
         }
 
         private void Look() {
@@ -107,6 +110,8 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             if (target) {
                 _yawPivot.position = target.position;
             }
+            
+            transform.position = _position.Tick(cameraDamping, Time.fixedDeltaTime, Mathf.Infinity);
         }
 
         private Vector3 CalculateArmEndPosition(Vector3 start, Vector3 dir, float maxLength) {
