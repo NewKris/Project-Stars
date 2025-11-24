@@ -115,7 +115,7 @@
             ]
         },
         {
-            "name": "Ship",
+            "name": "Flight",
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
@@ -191,7 +191,7 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Toggle Steering",
+                    "name": "Toggle Flight",
                     "type": "Button",
                     "id": "ba5b9cee-2637-4212-b47d-3bfc429870de",
                     "expectedControlType": "",
@@ -406,7 +406,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Toggle Steering",
+                    "action": "Toggle Flight",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

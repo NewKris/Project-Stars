@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using Werehorse.Runtime.SpaceCombat.Mecha;
 using Werehorse.Runtime.SpaceCombat.SpaceShip;
 
 namespace Werehorse.Runtime.SpaceCombat {
@@ -21,14 +22,11 @@ namespace Werehorse.Runtime.SpaceCombat {
         }
         
         private void Awake() {
-            PlayerShipController.OnPause += TogglePause;
         }
 
         private void OnDestroy() {
             Time.timeScale = 1;
             IsPaused = false;
-            
-            PlayerShipController.OnPause -= TogglePause;
         }
     }
 }

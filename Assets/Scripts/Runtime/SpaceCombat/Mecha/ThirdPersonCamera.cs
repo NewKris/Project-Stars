@@ -55,6 +55,11 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         public void Look(Vector2 deltaMouse) {
             _deltaMouse = deltaMouse;
         }
+
+        public void ResetOrientation() {
+            _pitch = 0;
+            _deltaMouse = Vector2.zero;
+        }
         
         private void OnValidate() {
             if (!target) {

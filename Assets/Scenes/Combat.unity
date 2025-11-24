@@ -1605,6 +1605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1027973971}
   - component: {fileID: 1027973972}
+  - component: {fileID: 1027973973}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1644,6 +1645,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.PlayerMechController
   actionMapIndex: 2
+--- !u!114 &1027973973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1027973970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 575881b688bfae843ab132f82ce6c7b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.PlayerFlightController
+  shipActionMap: 1
 --- !u!1 &1093756621
 GameObject:
   m_ObjectHideFlags: 0
@@ -4058,6 +4072,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e118af910694bc3a131ad653b95d82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.FlyState
+  thirdPersonCamera: {fileID: 330585548}
+  reticle: {fileID: 1993158347}
 --- !u!143 &2090095765
 CharacterController:
   m_ObjectHideFlags: 0

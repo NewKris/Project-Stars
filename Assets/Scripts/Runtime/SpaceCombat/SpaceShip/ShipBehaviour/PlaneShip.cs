@@ -1,4 +1,5 @@
 using UnityEngine;
+using Werehorse.Runtime.SpaceCombat.Mecha;
 using Werehorse.Runtime.SpaceCombat.Weapons;
 
 namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
@@ -38,24 +39,12 @@ namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
         }
         
         private void Awake() {
-            PlayerShipController.OnBeginFire1 += BeginFire1;
-            PlayerShipController.OnEndFire1 += EndFire1;
-            PlayerShipController.OnBeginFire2 += BeginFire2;
-            PlayerShipController.OnEndFire2 += EndFire2;
-            PlayerShipController.OnToggleSteering += ToggleSteerMode;
-
             PauseManager.OnPauseToggled += SetCursorVisibility;
             
             SetCursorVisibility(false);
         }
 
         private void OnDestroy() {
-            PlayerShipController.OnBeginFire1 -= BeginFire1;
-            PlayerShipController.OnEndFire1 -= EndFire1;
-            PlayerShipController.OnBeginFire2 -= BeginFire2;
-            PlayerShipController.OnEndFire2 -= EndFire2;
-            PlayerShipController.OnToggleSteering -= ToggleSteerMode;
-            
             PauseManager.OnPauseToggled -= SetCursorVisibility;
         }
 
@@ -65,7 +54,7 @@ namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
             }
 
             if (reticle) {
-                reticle.position = PlayerShipController.MousePosition;
+                reticle.position = PlayerFlightController.MousePosition;
             }
         }
         
@@ -83,19 +72,19 @@ namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
                 return new SteerValues() {
                     pitch = _normalizedMousePosition.y,
                     yaw = _normalizedMousePosition.x,
-                    roll = PlayerShipController.Roll
+                    roll = PlayerFlightController.Roll
                 };
             }
             
             return new SteerValues() {
-                pitch = PlayerShipController.Pitch,
-                yaw = PlayerShipController.Yaw,
-                roll = PlayerShipController.Roll
+                pitch = PlayerFlightController.Pitch,
+                yaw = PlayerFlightController.Yaw,
+                roll = PlayerFlightController.Roll
             };
         }
         
         private void Steer(SteerValues steerValues, float dt) {
-            _normalizedMousePosition = GetNormalizedMousePosition(PlayerShipController.MousePosition);
+            _normalizedMousePosition = GetNormalizedMousePosition(PlayerFlightController.MousePosition);
             Vector3 forward = transform.forward;
             Vector3 up = transform.up;
             

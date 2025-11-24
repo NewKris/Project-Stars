@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 namespace Werehorse.Runtime.SpaceCombat.Mecha {
     public class PlayerMechController : MonoBehaviour {
         public static event Action OnToggleFlight;
+        private static PlayerMechController Instance;
         
         public int actionMapIndex = 2;
 
@@ -23,8 +24,14 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         public static Vector2 Look { get; private set; }
         public static Vector2 Move { get; private set; }
         public static Vector2 Steer { get; private set; }
+
+        public static void SetEnabled(bool enabled) {
+            Instance.enabled = enabled;
+        }
         
         private void Awake() {
+            Instance = this;
+            
             _boostAction = ActionMap["Boost"];
             _rollAction = ActionMap["Roll"];
             _liftAction = ActionMap["Lift"];
@@ -33,8 +40,14 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             _steerAction = ActionMap["Steer"];
             
             ActionMap["Toggle Flight"].performed += _ => OnToggleFlight?.Invoke();
-            
+        }
+
+        private void OnEnable() {
             ActionMap.Enable();
+        }
+
+        private void OnDisable() {
+            ActionMap.Disable();
         }
 
         private void OnDestroy() {
