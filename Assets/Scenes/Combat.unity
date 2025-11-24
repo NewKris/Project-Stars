@@ -3990,10 +3990,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2090095759}
   - component: {fileID: 2090095760}
-  - component: {fileID: 2090095762}
-  - component: {fileID: 2090095761}
   - component: {fileID: 2090095763}
   - component: {fileID: 2090095764}
+  - component: {fileID: 2090095765}
   m_Layer: 0
   m_Name: Placeholder Mech
   m_TagString: Untagged
@@ -4031,56 +4030,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.MechaController
   strafeState: {fileID: 2090095763}
   flyState: {fileID: 2090095764}
---- !u!136 &2090095761
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090095758}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
---- !u!54 &2090095762
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2090095758}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
 --- !u!114 &2090095763
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4095,7 +4044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.StrafeState
   thirdPersonCamera: {fileID: 330585548}
   maxStrafeSpeed: 10
-  maxStrafeAcceleration: 50
+  maxStrafeAcceleration: 5
   angularDamping: 0.1
 --- !u!114 &2090095764
 MonoBehaviour:
@@ -4109,6 +4058,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e118af910694bc3a131ad653b95d82a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Werehorse.Runtime.SpaceCombat.Mecha.FlyState
+--- !u!143 &2090095765
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2090095758}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &2111591542
 GameObject:
   m_ObjectHideFlags: 0

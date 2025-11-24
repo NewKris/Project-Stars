@@ -11,7 +11,8 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         public float angularDamping;
         
         private DampedAngle _mechYaw;
-        private Rigidbody _rigidBody;
+        private Vector3 _velocity;
+        private CharacterController _characterController;
         
         public override void OnEnter() {
             _mechYaw = new DampedAngle(thirdPersonCamera.CurrentYaw);
@@ -22,26 +23,23 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
 
         private void Update() {
             thirdPersonCamera.Look(PlayerMechController.Look);
-        }
-
-        private void FixedUpdate() {
-            Strafe(Time.fixedDeltaTime);
-            LookForward(Time.fixedDeltaTime);
+            Strafe(Time.deltaTime);
+            LookForward(Time.deltaTime);
         }
 
         private void Awake() {
-            _rigidBody = GetComponent<Rigidbody>();
+            _characterController = GetComponent<CharacterController>();
         }
         
         private void Strafe(float dt) {
-            Vector3 velocity = PlayerMechController.Move.ProjectOnGround();
-            velocity.y = PlayerMechController.Lift;
-            velocity = thirdPersonCamera.StrafeSpace * velocity.normalized * maxStrafeSpeed;
-
-            Vector3 delta = velocity - _rigidBody.linearVelocity;
-            delta = Vector3.ClampMagnitude(delta, maxStrafeAcceleration * dt);
+            Vector3 targetVel = PlayerMechController.Move.ProjectOnGround();
+            targetVel.y = PlayerMechController.Lift;
+            targetVel = thirdPersonCamera.StrafeSpace * targetVel.normalized * maxStrafeSpeed;
             
-            _rigidBody.AddForce(delta, ForceMode.VelocityChange);
+            Vector3 delta = targetVel - _velocity;
+            _velocity += Vector3.ClampMagnitude(delta * dt, maxStrafeAcceleration);
+
+            _characterController.Move(_velocity * dt);
         }
 
         private void LookForward(float dt) {

@@ -80,9 +80,6 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
 
         private void Update() {
             Rotate();
-        }
-
-        private void FixedUpdate() {
             Move();
             Look();
         }
@@ -111,7 +108,7 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
                 _yawPivot.position = target.position;
             }
             
-            transform.position = _position.Tick(cameraDamping, Time.fixedDeltaTime, Mathf.Infinity);
+            transform.position = _position.Tick(cameraDamping);
         }
 
         private Vector3 CalculateArmEndPosition(Vector3 start, Vector3 dir, float maxLength) {
