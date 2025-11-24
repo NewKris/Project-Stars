@@ -1,5 +1,7 @@
 ﻿using System;
 using UnityEngine;
+using Werehorse.Runtime.SpaceCombat.Mecha.Flight;
+using Werehorse.Runtime.SpaceCombat.Mecha.Strafe;
 
 namespace Werehorse.Runtime.SpaceCombat.Mecha {
     public class MechaController : MonoBehaviour {
@@ -11,7 +13,7 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         private void Awake() {
             SetCursorVisibility(false);
 
-            PlayerMechController.OnToggleFlight += ToggleFlight;
+            MechStrafeController.OnToggleFlight += ToggleFlight;
         }
 
         private void Start() {
@@ -20,12 +22,12 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             _currentState.enabled = true;
             flyState.enabled = false;
             
-            PlayerMechController.SetEnabled(true);
-            PlayerFlightController.SetEnabled(false);
+            MechStrafeController.SetEnabled(true);
+            MechFlightController.SetEnabled(false);
         }
 
         private void OnDestroy() {
-            PlayerMechController.OnToggleFlight -= ToggleFlight;
+            MechStrafeController.OnToggleFlight -= ToggleFlight;
         }
 
         private void SwitchState(MechState toState) {
@@ -47,14 +49,14 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
             if (_currentState == flyState) {
                 SwitchState(strafeState);
                 
-                PlayerMechController.SetEnabled(true);
-                PlayerFlightController.SetEnabled(false);
+                MechStrafeController.SetEnabled(true);
+                MechFlightController.SetEnabled(false);
             }
             else {
                 SwitchState(flyState);
                 
-                PlayerMechController.SetEnabled(false);
-                PlayerFlightController.SetEnabled(true);
+                MechStrafeController.SetEnabled(false);
+                MechFlightController.SetEnabled(true);
             }
         }
     }

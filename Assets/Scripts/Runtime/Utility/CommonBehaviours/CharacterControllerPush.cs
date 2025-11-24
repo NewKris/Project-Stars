@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-namespace Werehorse.Runtime.SpaceCombat.Mecha {
+namespace Werehorse.Runtime.Utility.CommonBehaviours {
     public class CharacterControllerPush : MonoBehaviour {
         public float pushForce;
         

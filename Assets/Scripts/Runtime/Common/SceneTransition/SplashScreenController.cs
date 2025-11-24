@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Werehorse.Runtime.Common {
+namespace Werehorse.Runtime.Common.SceneTransition {
     public class SplashScreenController : MonoBehaviour {
         public float waitTime;
 

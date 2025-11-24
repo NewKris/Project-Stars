@@ -6,7 +6,6 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
     public class ThirdPersonCamera : MonoBehaviour {
         public float sensitivity = 1;
         public float cameraDamping;
-        public float lookDamping;
 
         [Header("Drone")] 
         public Transform target;

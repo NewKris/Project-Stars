@@ -1,5 +1,6 @@
 using UnityEngine;
 using Werehorse.Runtime.SpaceCombat.Mecha;
+using Werehorse.Runtime.SpaceCombat.Mecha.Flight;
 using Werehorse.Runtime.SpaceCombat.Weapons;
 
 namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
@@ -54,7 +55,7 @@ namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
             }
 
             if (reticle) {
-                reticle.position = PlayerFlightController.MousePosition;
+                reticle.position = MechFlightController.MousePosition;
             }
         }
         
@@ -72,19 +73,19 @@ namespace Werehorse.Runtime.SpaceCombat.SpaceShip.ShipBehaviour {
                 return new SteerValues() {
                     pitch = _normalizedMousePosition.y,
                     yaw = _normalizedMousePosition.x,
-                    roll = PlayerFlightController.Roll
+                    roll = MechFlightController.Roll
                 };
             }
             
             return new SteerValues() {
-                pitch = PlayerFlightController.Pitch,
-                yaw = PlayerFlightController.Yaw,
-                roll = PlayerFlightController.Roll
+                pitch = MechFlightController.Pitch,
+                yaw = MechFlightController.Yaw,
+                roll = MechFlightController.Roll
             };
         }
         
         private void Steer(SteerValues steerValues, float dt) {
-            _normalizedMousePosition = GetNormalizedMousePosition(PlayerFlightController.MousePosition);
+            _normalizedMousePosition = GetNormalizedMousePosition(MechFlightController.MousePosition);
             Vector3 forward = transform.forward;
             Vector3 up = transform.up;
             

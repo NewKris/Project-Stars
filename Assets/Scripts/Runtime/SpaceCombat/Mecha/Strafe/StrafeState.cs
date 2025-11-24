@@ -1,9 +1,8 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Werehorse.Runtime.Utility.CommonObjects;
 using Werehorse.Runtime.Utility.Extensions;
 
-namespace Werehorse.Runtime.SpaceCombat.Mecha {
+namespace Werehorse.Runtime.SpaceCombat.Mecha.Strafe {
     public class StrafeState : MechState {
         public ThirdPersonCamera thirdPersonCamera;
         public float maxStrafeSpeed;
@@ -22,7 +21,7 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         }
 
         private void Update() {
-            thirdPersonCamera.Look(PlayerMechController.Look);
+            thirdPersonCamera.Look(MechStrafeController.Look);
             Strafe(Time.deltaTime);
             LookForward(Time.deltaTime);
         }
@@ -32,8 +31,8 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
         }
         
         private void Strafe(float dt) {
-            Vector3 targetVel = PlayerMechController.Move.ProjectOnGround();
-            targetVel.y = PlayerMechController.Lift;
+            Vector3 targetVel = MechStrafeController.Move.ProjectOnGround();
+            targetVel.y = MechStrafeController.Lift;
             targetVel = thirdPersonCamera.StrafeSpace * targetVel.normalized * maxStrafeSpeed;
             
             Vector3 delta = targetVel - _velocity;

@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Werehorse.Runtime.Utility;
 
-namespace Werehorse.Runtime.Common {
+namespace Werehorse.Runtime.Common.SceneTransition {
     public class SceneTransitionController : MonoBehaviour {
         private static SceneTransitionController Instance;
 

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using Werehorse.Runtime.SpaceCombat.Mecha;
+using Werehorse.Runtime.SpaceCombat.Mecha.Flight;
 using Werehorse.Runtime.SpaceCombat.Projectiles.SimpleProjectiles;
 using Werehorse.Runtime.SpaceCombat.SpaceShip;
 using Random = UnityEngine.Random;
@@ -56,7 +57,7 @@ namespace Werehorse.Runtime.SpaceCombat.Weapons {
         }
 
         private Quaternion GetBulletRotation(Vector3 spawnPos) {
-            Ray ray = Camera.main.ScreenPointToRay(PlayerFlightController.MousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(MechFlightController.MousePosition);
             Vector3 convergePoint = ray.GetPoint(convergeDistance);
             Vector3 dir = convergePoint - spawnPos;
             

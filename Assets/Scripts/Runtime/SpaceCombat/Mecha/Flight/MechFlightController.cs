@@ -2,11 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Werehorse.Runtime.SpaceCombat.Mecha {
-    public class PlayerFlightController : MonoBehaviour {
+namespace Werehorse.Runtime.SpaceCombat.Mecha.Flight {
+    public class MechFlightController : MonoBehaviour {
         public static event Action OnToggleFlight;
         
-        private static PlayerFlightController Instance;
+        private static MechFlightController Instance;
 
         public int shipActionMap = 0;
 

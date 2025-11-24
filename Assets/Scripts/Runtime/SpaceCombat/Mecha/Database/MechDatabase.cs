@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using UnityEngine;
 
-namespace Werehorse.Runtime.SpaceCombat.Mecha {
+namespace Werehorse.Runtime.SpaceCombat.Mecha.Database {
     [CreateAssetMenu(menuName = "Mechs/Database")]
     public class MechDatabase : ScriptableObject {
         public MechData[] mechs;

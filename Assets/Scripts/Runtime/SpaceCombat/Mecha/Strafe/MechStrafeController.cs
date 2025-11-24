@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Werehorse.Runtime.SpaceCombat.Mecha {
-    public class PlayerMechController : MonoBehaviour {
+namespace Werehorse.Runtime.SpaceCombat.Mecha.Strafe {
+    public class MechStrafeController : MonoBehaviour {
         public static event Action OnToggleFlight;
-        private static PlayerMechController Instance;
+        private static MechStrafeController Instance;
         
         public int actionMapIndex = 2;
 

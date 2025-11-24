@@ -1,7 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
-namespace Werehorse.Runtime.SpaceCombat.Mecha {
+namespace Werehorse.Runtime.SpaceCombat.Mecha.Flight {
     public class FlyState : MechState {
         public ThirdPersonCamera thirdPersonCamera;
         public RectTransform reticle;
@@ -17,7 +16,7 @@ namespace Werehorse.Runtime.SpaceCombat.Mecha {
 
         private void Update() {
             if (reticle) {
-                reticle.position = PlayerFlightController.MousePosition;
+                reticle.position = MechFlightController.MousePosition;
             }
         }
     }

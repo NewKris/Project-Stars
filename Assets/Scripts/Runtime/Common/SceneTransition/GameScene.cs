@@ -1,4 +1,4 @@
-namespace Werehorse.Runtime.Common {
+namespace Werehorse.Runtime.Common.SceneTransition {
     public enum GameScene {
         SPLASH_SCREEN = 0,
         MAIN_MENU = 1,
