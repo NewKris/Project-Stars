@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace Werehorse.Runtime.SpaceCombat {
+namespace Werehorse.Runtime.SpaceCombat.Pausing {
     public class PauseMenu : MonoBehaviour {
         public void ResumeGame() {
             PauseManager.TogglePause();

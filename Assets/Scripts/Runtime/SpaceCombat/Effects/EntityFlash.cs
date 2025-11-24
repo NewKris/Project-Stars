@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Werehorse.Runtime.SpaceCombat {
+namespace Werehorse.Runtime.SpaceCombat.Effects {
     public class EntityFlash : MonoBehaviour {
         private static readonly int FlashStrength = Shader.PropertyToID("_Flash_Strength");
 

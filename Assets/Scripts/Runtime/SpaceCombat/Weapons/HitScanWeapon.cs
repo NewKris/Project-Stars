@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using Werehorse.Runtime.SpaceCombat.Boxes;
 using Werehorse.Runtime.SpaceCombat.Effects.Sparks;
-using Werehorse.Runtime.SpaceCombat.Mecha;
-using Werehorse.Runtime.SpaceCombat.Mecha.Flight;
+using Werehorse.Runtime.SpaceCombat.Pausing;
 using Werehorse.Runtime.SpaceCombat.Projectiles.FakeProjectiles;
-using Werehorse.Runtime.SpaceCombat.SpaceShip;
 using Random = UnityEngine.Random;
 
 namespace Werehorse.Runtime.SpaceCombat.Weapons {
@@ -46,7 +44,7 @@ namespace Werehorse.Runtime.SpaceCombat.Weapons {
             _audio.PlayOneShot(shootSounds[Random.Range(0, shootSounds.Length)]);
 
             Vector3 hitPos;
-            Ray ray = Camera.main.ScreenPointToRay(MechFlightController.MousePosition);
+            Ray ray = Camera.main.ScreenPointToRay(WeaponController.MousePosition);
             
             if (Physics.Raycast(ray, out RaycastHit hit, maxRange, targetMasks)) {
                 SparksSystem.PlaySparks(hit.point, hit.normal);

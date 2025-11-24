@@ -1,9 +1,7 @@
 ﻿using System;
 using UnityEngine;
-using Werehorse.Runtime.SpaceCombat.Mecha;
-using Werehorse.Runtime.SpaceCombat.SpaceShip;
 
-namespace Werehorse.Runtime.SpaceCombat {
+namespace Werehorse.Runtime.SpaceCombat.Pausing {
     public class PauseManager : MonoBehaviour {
         public static event Action<bool> OnPauseToggled; 
         
@@ -19,9 +17,6 @@ namespace Werehorse.Runtime.SpaceCombat {
             IsPaused = paused;
             Time.timeScale = IsPaused ? 0 : 1;
             OnPauseToggled?.Invoke(IsPaused);
-        }
-        
-        private void Awake() {
         }
 
         private void OnDestroy() {
