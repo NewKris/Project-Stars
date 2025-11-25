@@ -119,24 +119,6 @@
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
                 {
-                    "name": "Fire1",
-                    "type": "Button",
-                    "id": "6c2ab1b8-8984-453a-af3d-a3c78ae1679a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Fire2",
-                    "type": "Button",
-                    "id": "95429678-a230-4363-90b7-55809abbee68",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Aim",
                     "type": "Value",
                     "id": "6db13da9-d795-4ca9-afa2-f1a21ae44911",
@@ -146,45 +128,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Pause",
-                    "type": "Button",
-                    "id": "7c5cee12-8a21-45f0-a23a-937e3aa7c90a",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Roll",
                     "type": "Value",
                     "id": "5f1a8306-c817-480b-b793-80f32cf80fe6",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Test",
-                    "type": "Button",
-                    "id": "68a6d32c-3f3b-419c-9757-dabbf5ed952c",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Yaw",
-                    "type": "Value",
-                    "id": "ba94188d-8ff7-4233-9eca-d4d9a47413fb",
-                    "expectedControlType": "Axis",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
-                    "name": "Pitch",
-                    "type": "Value",
-                    "id": "05785434-1729-4ae4-b401-48515f77822a",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -203,89 +149,12 @@
             "bindings": [
                 {
                     "name": "",
-                    "id": "143bb1cd-cc10-4eca-a2f0-a3664166fe91",
-                    "path": "<Gamepad>/rightTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Fire1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "05f6913d-c316-48b2-a6bb-e225f14c7960",
-                    "path": "<Mouse>/leftButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Fire1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "ccaf9d79-c588-4d5c-bff5-857b4f3eb579",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire1",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "1730797d-310b-4883-9ed8-0dd6384838bc",
-                    "path": "<Gamepad>/leftTrigger",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "f81ba16b-7ac6-4d99-b57c-401d0f1a409b",
-                    "path": "<Mouse>/rightButton",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "64406b2e-bdea-4bc7-85ec-89d351c5c403",
-                    "path": "<Keyboard>/2",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Fire2",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "bec0a756-6701-4ca2-93cc-444c97865b83",
                     "path": "<Mouse>/position",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "Aim",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "3a0b1673-c676-4dfc-a3ec-83faf65190dc",
-                    "path": "<Keyboard>/p",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -324,83 +193,6 @@
                 },
                 {
                     "name": "",
-                    "id": "3709593f-6b5e-4d84-86a7-ce9a2549bbb8",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Test",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "dc31f4a7-3bfa-4710-8aa9-299d7ee637ba",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Yaw",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "f2c815d8-62b1-4086-955e-83aefd2e5f9a",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Yaw",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "4bfff578-c655-46e2-8f14-f67c61864cdf",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Yaw",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "5969567f-16a1-4d93-b5ab-a2d57bae2917",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pitch",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "6773de1a-d1e0-4dc8-8333-18b987492e96",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pitch",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "9bf6df50-6ba3-4835-b94c-e21cc995b0b2",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Pitch",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "",
                     "id": "2e049a1d-3cb6-4961-8f21-172d9f483bd1",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
@@ -413,7 +205,7 @@
             ]
         },
         {
-            "name": "Mecha",
+            "name": "Strafe",
             "id": "b49c3f00-16ed-4ed1-9017-d7a46a948258",
             "actions": [
                 {
@@ -435,24 +227,6 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Boost",
-                    "type": "PassThrough",
-                    "id": "bbd6a8aa-83aa-43c0-a405-205b1fc924d6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Steer",
-                    "type": "Value",
-                    "id": "f2222c2f-5f0b-4cb9-bb22-66e9861a16b2",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Toggle Flight",
                     "type": "Button",
                     "id": "23823f67-ae8a-4ce5-a1da-9d06be815932",
@@ -462,18 +236,18 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Roll",
+                    "name": "Lift",
                     "type": "Value",
-                    "id": "f0f17eed-ebe4-4cc4-b620-126d4eb0aec7",
+                    "id": "c54e5413-338c-4861-ab2d-38192f402204",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Lift",
+                    "name": "Roll",
                     "type": "Value",
-                    "id": "c54e5413-338c-4861-ab2d-38192f402204",
+                    "id": "8926b133-5c0b-498f-9b37-ec366a4ca735",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
@@ -549,28 +323,6 @@
                 },
                 {
                     "name": "",
-                    "id": "1eb47fe5-5b96-4523-bc1f-a664fcc34055",
-                    "path": "<Keyboard>/leftShift",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Boost",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "776ce8a4-e9d9-4777-bc8e-9fcfc07d1b1a",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Steer",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "c9e3b0b7-6553-4e3f-8b32-3650f1e49635",
                     "path": "<Keyboard>/tab",
                     "interactions": "",
@@ -579,39 +331,6 @@
                     "action": "Toggle Flight",
                     "isComposite": false,
                     "isPartOfComposite": false
-                },
-                {
-                    "name": "1D Axis",
-                    "id": "ba67ff72-9527-4080-93ab-42ef700d5094",
-                    "path": "1DAxis",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "negative",
-                    "id": "35afc1dc-da22-4a48-8bda-3d257bbb9f6d",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "3ec8f494-6290-4f2c-8751-bb705d3705fc",
-                    "path": "<Keyboard>/e",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Roll",
-                    "isComposite": false,
-                    "isPartOfComposite": true
                 },
                 {
                     "name": "1D Axis",
@@ -643,6 +362,39 @@
                     "processors": "",
                     "groups": "",
                     "action": "Lift",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "1D Axis",
+                    "id": "79c22d0f-2e2d-4553-9275-5741603430d5",
+                    "path": "1DAxis",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "negative",
+                    "id": "f57d6cf0-ff1a-4e11-bcb1-4e7e53d123aa",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "positive",
+                    "id": "cdb99445-1c4e-42b0-8c4d-cb5878e23dc7",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Roll",
                     "isComposite": false,
                     "isPartOfComposite": true
                 }

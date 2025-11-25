@@ -5,7 +5,7 @@ namespace Werehorse.Runtime.Utility.CommonBehaviours {
     /// <summary>
     /// Follows a target with soft damping.
     /// </summary>
-    public class Drone : MonoBehaviour {
+    public class MatchPosition : MonoBehaviour {
         public Transform target;
         public float damping;
 

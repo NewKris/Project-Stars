@@ -1,9 +1,14 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 using Werehorse.Runtime.Utility.Extensions;
 
 namespace Werehorse.Runtime.Utility {
     public static class HandlesProxy {
+        public static Vector3 ViewPortForward() {
+#if UNITY_EDITOR
+            return UnityEditor.SceneView.currentDrawingSceneView.camera.transform.forward;
+#endif
+        }
+        
         public static void DrawArrow(Vector3 position, Vector3 direction, Quaternion worldSpace, float size, Color color) {
 #if UNITY_EDITOR
             UnityEditor.Handles.color = color;
@@ -33,8 +38,8 @@ namespace Werehorse.Runtime.Utility {
             Gizmos.color = color;
 
             if (wire) {
-                DrawDisc(position, Vector3.up, radius, true, color, thickness);
-                DrawDisc(position, Vector3.forward, radius, true, color, thickness);
+                DrawDisc(position, ViewPortForward(), radius, true, color, thickness);
+                //DrawDisc(position, Vector3.forward, radius, true, color, thickness);
             } 
             else {
                 Gizmos.DrawSphere(position, radius);
@@ -239,7 +244,7 @@ namespace Werehorse.Runtime.Utility {
             Color color
         ) {
 #if UNITY_EDITOR
-            Handles.color = color;
+            UnityEditor.Handles.color = color;
             float startAngle = angle * -0.5f;
             float stepSize = angle / resolution;
 
@@ -250,11 +255,11 @@ namespace Werehorse.Runtime.Utility {
                 points[i] = position + q * forward * radius;
 
                 if (i == 0 || i == resolution) {
-                    Handles.DrawLine(position, points[i], thickness);
+                    UnityEditor.Handles.DrawLine(position, points[i], thickness);
                 }
                 
                 if (i > 0) {
-                    Handles.DrawLine(points[i - 1], points[i], thickness);
+                    UnityEditor.Handles.DrawLine(points[i - 1], points[i], thickness);
                 }
             }
 #endif
