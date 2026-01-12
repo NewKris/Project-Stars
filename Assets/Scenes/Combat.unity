@@ -1684,7 +1684,7 @@ MonoBehaviour:
   weaponDatabase: {fileID: 11400000, guid: e2654c4e5276a3b4ebbab9e5939d9ffa, type: 2}
   gameOverScreen: {fileID: 1222687718}
   defaultEquipments:
-    shipBaseId: 2
+    shipBaseId: 0
     weapon1Id: 0
     weapon2Id: 1
 --- !u!1 &1093756621
