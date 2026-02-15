@@ -81,6 +81,8 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
 
         private SteerValues GetSteerValues() {
             if (_mouseSteering) {
+                _normalizedMousePosition = GetNormalizedMousePosition(PlayerShipController.MousePosition);
+                
                 return new SteerValues() {
                     pitch = _normalizedMousePosition.y,
                     yaw = _normalizedMousePosition.x,
@@ -96,7 +98,6 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
         }
         
         private void Steer(SteerValues steerValues, float dt) {
-            _normalizedMousePosition = GetNormalizedMousePosition(PlayerShipController.MousePosition);
             Vector3 forward = transform.forward;
             Vector3 up = transform.up;
             
