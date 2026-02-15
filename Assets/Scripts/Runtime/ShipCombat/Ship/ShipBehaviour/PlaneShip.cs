@@ -98,15 +98,12 @@ namespace Werehorse.Runtime.ShipCombat.Ship.ShipBehaviour {
         }
         
         private void Steer(SteerValues steerValues, float dt) {
-            Vector3 forward = transform.forward;
-            Vector3 up = transform.up;
-            
             Quaternion pitch = Quaternion.AngleAxis(steerValues.pitch * -maxPitchSpeed * dt, transform.right);
             Quaternion yaw = Quaternion.AngleAxis(steerValues.yaw * maxYawSpeed * dt, transform.up);
             Quaternion roll = Quaternion.AngleAxis(steerValues.roll * -maxRollSpeed * dt, transform.forward);
             
-            forward = yaw * pitch * forward;
-            up = pitch * roll * up;
+            Vector3 forward = yaw * pitch * transform.forward;
+            Vector3 up = pitch * roll * transform.up;
             
             Quaternion targetRot = Quaternion.LookRotation(forward, up);
             
